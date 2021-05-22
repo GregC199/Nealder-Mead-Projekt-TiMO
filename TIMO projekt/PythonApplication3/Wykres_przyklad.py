@@ -38,7 +38,7 @@ x = np.linspace(0, 5, 50)
 y = np.linspace(0, 5, 40)
 
 X, Y = np.meshgrid(x, y)
-Z = f(X2, X1)
+Z = f(X, Y)
 
 arrPunktowX = [1, 3]
 arrPunktowY = [1, 3]
