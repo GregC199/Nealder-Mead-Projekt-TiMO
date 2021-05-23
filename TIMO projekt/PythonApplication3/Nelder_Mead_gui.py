@@ -11,8 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import PythonApplication3 as pa3
 import numpy as np
+from pip._vendor.html5lib.treebuilders.etree_lxml import tostring
 
 class Ui_MainWindow(object):
+    L = 0
+    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1049, 814)
@@ -2824,13 +2827,16 @@ class Ui_MainWindow(object):
         self.ButtonKrokOptimum.clicked.connect(self.pokaz_optimum)##########
         self.ButtonWyrysuj.clicked.connect(self.wyrysuj_warstwice)##########
         self.txtIloscKrokow.textChanged.connect(self.scroll_zmien_max)
+        self.txtL.textChanged.connect(self.L_change)
         #self.txtKrok.textChanged.connect(self.scroll_zmien_wart)
         '''
         Coś się psuło
         '''
         self.ScrollKrok.valueChanged.connect(self.tekst_krok_wart)
         
-    
+    def L_change(self):
+        self.L = int(self.txtL.text())
+        print('zmieniam L ')
     def pokaz_krok(self):
         self.txtIloscKrokow.clear()
         self.txtIloscKrokow.insert("100")
@@ -2896,9 +2902,7 @@ class Ui_MainWindow(object):
             self.txtBX5.setEnabled(0)
 
     def click_znajdz(self):
-        pa3.L = 0
-        if int(self.txtL.text()) > 0:
-            pa3.L = int(self.txtL.text())
+        
         start = pa3.np.empty(pa3.argm)
         if pa3.argm >= 2:
             start[0] = pa3.random.uniform(int(self.txtAX1.text()),int(self.txtBX1.text()))
@@ -2909,7 +2913,7 @@ class Ui_MainWindow(object):
             start[3] = pa3.random.uniform(int(self.txtAX4.text()),int(self.txtBX4.text()))
         if pa3.argm >= 5:
             start[4] = pa3.random.uniform(int(self.txtAX5.text()),int(self.txtBX5.text()))
-        pa3.algorytm(start)
+        pa3.algorytm(start,self.L)
 
   
         #pa3.nelder_mead(self.txtFunkcja.text(), pa3.f, start)

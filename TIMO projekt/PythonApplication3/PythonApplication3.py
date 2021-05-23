@@ -42,14 +42,16 @@ def f(x):
     return eval(f_str)
 
 
-def nelder_mead(f, x_start,
+def nelder_mead(f, x_start, max_iter=0,
                 step=0.1, no_improve_thr=epsilon,
-                no_improv_break=10, max_iter=L,
+                no_improv_break=10, 
                 alpha=1., gamma=2., rho=-0.5, sigma=0.5):
 
     # init
     global best_points
     global simplexes
+    global L
+    max_iter = L
     dim = len(x_start)
     prev_best = f(x_start)
     no_improv = 0
@@ -65,6 +67,8 @@ def nelder_mead(f, x_start,
     # simplex iter
     iters = 0
     while 1:
+        print('L iteracje: ',L)
+        print('max_iter iteracje: ',max_iter)
         print(iters)
         # order
         res.sort(key=lambda x: x[1])
@@ -75,14 +79,17 @@ def nelder_mead(f, x_start,
         simplexes.append(res[1])
         simplexes.append(res[2])
 
-        print('test')
-        print(res[0][0][0],res[0][0][1],res[0][1])
-        print(*simplexes,sep='\n')
+        #print('test')
+        #print(res[0][0][0],res[0][0][1],res[0][1])
+        #print(*simplexes,sep='\n')
         # break after max_iter
         if max_iter and iters >= max_iter:
             print('best val',res[0])
             best_points = bestlist
             return bestlist
+        if max_iter and iters >= max_iter:
+            print('Wszedlem do brejka')
+            break
             #return res[0]
 
         iters += 1
@@ -146,8 +153,11 @@ def nelder_mead(f, x_start,
         res = nres
 
 
-def algorytm(start):
-
+def algorytm(start,iter):
+    global L
+    print('Odebralem iteracje: ',iter)
+    L = iter
+    print('L iteracje: ',L)
     result = nelder_mead(f, start)
     #print(result)
     print(*result, sep='\n')
