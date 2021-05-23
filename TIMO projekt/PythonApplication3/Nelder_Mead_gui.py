@@ -12,6 +12,17 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import PythonApplication3 as pa3
 import numpy as np
 from pip._vendor.html5lib.treebuilders.etree_lxml import tostring
+import matplotlib
+matplotlib.use('Qt5Agg')
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as NavigationToolbar
+from matplotlib.figure import Figure
+
+
+class MplCanvas(FigureCanvasQTAgg):
+    def __init__(self, parent=None, width=5, height=4, dpi=100):
+        fig = Figure(figsize=(width, height), dpi=dpi)
+        self.axes = fig.add_subplot(111)
+        super(MplCanvas, self).__init__(fig)
 
 class Ui_MainWindow(object):
     L = 0
@@ -2851,18 +2862,30 @@ class Ui_MainWindow(object):
             msg.exec_()
             
     def scroll_zmien_max(self):
-        if np.isnan(int(self.txtIloscKrokow.text())) == 0:
-            self.ScrollKrok.setMaximum(int(self.txtIloscKrokow.text()))
+        if self.txtIloscKrokow.text() != '':
+            if np.isnan(int(self.txtIloscKrokow.text())) == 0:
+                if int(self.txtIloscKrokow.text()) > 0:
+                    self.ScrollKrok.setMaximum(int(self.txtIloscKrokow.text()))
         
     def tekst_krok_wart(self):
         self.txtKrok.setText(str(self.ScrollKrok.value()))
             
     def pokaz_optimum(self):
         a = 1
+        
     def wyrysuj_warstwice(self):
+        sc = MplCanvas(self.frame_2, width=5, height=4, dpi=100)
+        sc.axes.plot([0,1,2,3,4], [10,1,20,3,40])
+        
+                # Create toolbar, passing canvas as first parament, parent (self, the MainWindow) as second.
+        toolbar1 = NavigationToolbar(sc, self)
 
+        layout1 = QtWidgets.QVBoxLayout()
+        layout1.addWidget(toolbar)
+        layout1.addWidget(sc)
 
-        a = 1
+        # Create a placeholder widget to hold our toolbar and canvas.
+        self.frame_2.setLayout(layout1)
             
     def click_analiza(self):
         print('click_analiza - zadzialal')
