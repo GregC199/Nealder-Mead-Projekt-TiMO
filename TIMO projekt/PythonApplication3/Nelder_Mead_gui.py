@@ -2816,6 +2816,7 @@ class Ui_MainWindow(object):
         
         
     def CustomFunctions(self):
+        self.txtEpsilon.setText(str(pa3.epsilon))
         self.ButtonAnaliza.clicked.connect(self.click_analiza)##########
         self.ButtonObliczOptimum.clicked.connect(self.click_znajdz)##########
         self.ButtonDanyKrok.clicked.connect(self.pokaz_krok)##########
