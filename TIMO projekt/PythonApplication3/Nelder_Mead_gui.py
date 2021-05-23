@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import PythonApplication3 as pa3
 
 
 class Ui_MainWindow(object):
@@ -2799,6 +2800,7 @@ class Ui_MainWindow(object):
         self.BoxObsluga.addWidget(self.BoxPrawy)
         self.verticalLayout_7.addLayout(self.BoxObsluga)
         MainWindow.setCentralWidget(self.centralwidget)
+        self.ButtonAnaliza.clicked.connect(self.click_analiza)##########
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -2836,6 +2838,28 @@ class Ui_MainWindow(object):
         self.ButtonKrokOptimum.setText(_translate("MainWindow", "Pokaż optimum"))
         self.ButtonDanyKrok.setText(_translate("MainWindow", "Pokaż dany krok"))
         self.ButtonWyrysuj.setText(_translate("MainWindow", "Wyrysuj warstwicę"))
+
+    def click_analiza(self):
+        print('dupa')
+        arguments = pa3.start_eval(self.txtFunkcja.text())
+        print(pa3.start_eval(self.txtFunkcja.text()))
+        if arguments == 2:
+            self.txtAX1.setEnabled(1)
+            self.txtBX1.setEnabled(1)
+            self.txtAX2.setEnabled(1)
+            self.txtBX2.setEnabled(1)
+        if arguments ==3:
+            self.txtAX3.setEnabled(1)
+            self.txtBX3.setEnabled(1)
+        if arguments ==4:
+            self.txtAX4.setEnabled(1)
+            self.txtBX4.setEnabled(1)
+        if arguments ==5:
+            self.txtAX5.setEnabled(1)
+            self.txtBX5.setEnabled(1)
+
+
+
 
 
 if __name__ == "__main__":
