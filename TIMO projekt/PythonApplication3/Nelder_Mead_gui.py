@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import PythonApplication3 as pa3
-
+import numpy as np
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -403,7 +403,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.BoxKostka.sizePolicy().hasHeightForWidth())
         self.BoxKostka.setSizePolicy(sizePolicy)
-        self.BoxKostka.setMinimumSize(QtCore.QSize(0, 233))
+        self.BoxKostka.setMinimumSize(QtCore.QSize(0, 165))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         self.BoxKostka.setFont(font)
@@ -2154,34 +2154,6 @@ class Ui_MainWindow(object):
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_13.addItem(spacerItem1)
         self.verticalLayout_5.addWidget(self.widget_15)
-        self.widget_16 = QtWidgets.QWidget(self.BoxKostka)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_16.sizePolicy().hasHeightForWidth())
-        self.widget_16.setSizePolicy(sizePolicy)
-        self.widget_16.setMinimumSize(QtCore.QSize(0, 28))
-        self.widget_16.setMaximumSize(QtCore.QSize(16777215, 40))
-        self.widget_16.setObjectName("widget_16")
-        self.horizontalLayout_14 = QtWidgets.QHBoxLayout(self.widget_16)
-        self.horizontalLayout_14.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_14.setSpacing(0)
-        self.horizontalLayout_14.setObjectName("horizontalLayout_14")
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_14.addItem(spacerItem2)
-        self.ButtonEdytujKostke = QtWidgets.QPushButton(self.widget_16)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.ButtonEdytujKostke.sizePolicy().hasHeightForWidth())
-        self.ButtonEdytujKostke.setSizePolicy(sizePolicy)
-        self.ButtonEdytujKostke.setMinimumSize(QtCore.QSize(150, 0))
-        self.ButtonEdytujKostke.setMaximumSize(QtCore.QSize(16777215, 40))
-        self.ButtonEdytujKostke.setObjectName("ButtonEdytujKostke")
-        self.horizontalLayout_14.addWidget(self.ButtonEdytujKostke)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_14.addItem(spacerItem3)
-        self.verticalLayout_5.addWidget(self.widget_16)
         self.BoxLewy.addWidget(self.BoxKostka)
         self.BoxEpsL = QtWidgets.QWidget(self.BoxLewy_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
@@ -2204,8 +2176,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem4)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem2)
         self.Epsilon = QtWidgets.QGroupBox(self.widget_3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2245,6 +2217,7 @@ class Ui_MainWindow(object):
         font.setFamily("Segoe UI")
         self.LBox.setFont(font)
         self.LBox.setAutoFillBackground(True)
+        self.LBox.setAlignment(QtCore.Qt.AlignCenter)
         self.LBox.setObjectName("LBox")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.LBox)
         self.gridLayout_3.setObjectName("gridLayout_3")
@@ -2259,8 +2232,8 @@ class Ui_MainWindow(object):
         self.txtL.setObjectName("txtL")
         self.gridLayout_3.addWidget(self.txtL, 0, 0, 1, 1)
         self.horizontalLayout_5.addWidget(self.LBox)
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem5)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem3)
         self.verticalLayout_3.addWidget(self.widget_3)
         self.widget_6 = QtWidgets.QWidget(self.BoxEpsL)
         self.widget_6.setMaximumSize(QtCore.QSize(16777215, 50))
@@ -2269,8 +2242,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setContentsMargins(1, 1, 1, 1)
         self.horizontalLayout_9.setSpacing(1)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_9.addItem(spacerItem6)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem4)
         self.ButtonEdytujEpsL = QtWidgets.QPushButton(self.widget_6)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2281,12 +2254,12 @@ class Ui_MainWindow(object):
         self.ButtonEdytujEpsL.setMaximumSize(QtCore.QSize(16777215, 40))
         self.ButtonEdytujEpsL.setObjectName("ButtonEdytujEpsL")
         self.horizontalLayout_9.addWidget(self.ButtonEdytujEpsL)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_9.addItem(spacerItem7)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem5)
         self.verticalLayout_3.addWidget(self.widget_6)
         self.BoxLewy.addWidget(self.BoxEpsL)
-        spacerItem8 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.BoxLewy.addItem(spacerItem8)
+        spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.BoxLewy.addItem(spacerItem6)
         self.FrameKroki = QtWidgets.QFrame(self.BoxLewy_2)
         self.FrameKroki.setMinimumSize(QtCore.QSize(0, 262))
         palette = QtGui.QPalette()
@@ -2642,8 +2615,8 @@ class Ui_MainWindow(object):
         self.txtIloscKrokow.setAlignment(QtCore.Qt.AlignCenter)
         self.txtIloscKrokow.setObjectName("txtIloscKrokow")
         self.horizontalLayout.addWidget(self.txtIloscKrokow)
-        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem9)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem7)
         self.verticalLayout_8.addWidget(self.ilosckrok_2)
         self.krok_2 = QtWidgets.QWidget(self.BoxKroki)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -2683,8 +2656,8 @@ class Ui_MainWindow(object):
         self.txtKrok.setAlignment(QtCore.Qt.AlignCenter)
         self.txtKrok.setObjectName("txtKrok")
         self.horizontalLayout_2.addWidget(self.txtKrok)
-        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem10)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem8)
         self.verticalLayout_8.addWidget(self.krok_2)
         self.widget_8 = QtWidgets.QWidget(self.BoxKroki)
         self.widget_8.setObjectName("widget_8")
@@ -2692,8 +2665,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setContentsMargins(1, 1, 1, 1)
         self.horizontalLayout_11.setSpacing(1)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_11.addItem(spacerItem11)
+        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem9)
         self.ButtonKrokOptimum = QtWidgets.QPushButton(self.widget_8)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2704,8 +2677,8 @@ class Ui_MainWindow(object):
         self.ButtonKrokOptimum.setMaximumSize(QtCore.QSize(16777215, 40))
         self.ButtonKrokOptimum.setObjectName("ButtonKrokOptimum")
         self.horizontalLayout_11.addWidget(self.ButtonKrokOptimum)
-        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_11.addItem(spacerItem12)
+        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem10)
         self.verticalLayout_8.addWidget(self.widget_8)
         self.widget_4 = QtWidgets.QWidget(self.BoxKroki)
         self.widget_4.setObjectName("widget_4")
@@ -2713,8 +2686,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setContentsMargins(1, 1, 1, 1)
         self.horizontalLayout_12.setSpacing(1)
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
-        spacerItem13 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_12.addItem(spacerItem13)
+        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem11)
         self.ButtonDanyKrok = QtWidgets.QPushButton(self.widget_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2725,8 +2698,8 @@ class Ui_MainWindow(object):
         self.ButtonDanyKrok.setMaximumSize(QtCore.QSize(16777215, 40))
         self.ButtonDanyKrok.setObjectName("ButtonDanyKrok")
         self.horizontalLayout_12.addWidget(self.ButtonDanyKrok)
-        spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_12.addItem(spacerItem14)
+        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem12)
         self.verticalLayout_8.addWidget(self.widget_4)
         self.ScrollKrok = QtWidgets.QScrollBar(self.BoxKroki)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -2770,8 +2743,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.setContentsMargins(1, 1, 1, 1)
         self.horizontalLayout_10.setSpacing(1)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        spacerItem15 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_10.addItem(spacerItem15)
+        spacerItem13 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem13)
         self.ButtonWyrysuj = QtWidgets.QPushButton(self.widget_7)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2782,11 +2755,11 @@ class Ui_MainWindow(object):
         self.ButtonWyrysuj.setMaximumSize(QtCore.QSize(16777215, 40))
         self.ButtonWyrysuj.setObjectName("ButtonWyrysuj")
         self.horizontalLayout_10.addWidget(self.ButtonWyrysuj)
-        spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_10.addItem(spacerItem16)
+        spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem14)
         self.verticalLayout_6.addWidget(self.widget_7)
-        spacerItem17 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
-        self.verticalLayout_6.addItem(spacerItem17)
+        spacerItem15 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
+        self.verticalLayout_6.addItem(spacerItem15)
         self.Konsola = QtWidgets.QTextEdit(self.BoxPrawy)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2800,12 +2773,13 @@ class Ui_MainWindow(object):
         self.BoxObsluga.addWidget(self.BoxPrawy)
         self.verticalLayout_7.addLayout(self.BoxObsluga)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.ButtonAnaliza.clicked.connect(self.click_analiza)##########
-        self.ButtonObliczOptimum.clicked.connect(self.click_znajdz)##########
-
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+        self.txtIloscKrokow.setReadOnly(1)
+        
+        self.CustomFunctions()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -2830,7 +2804,6 @@ class Ui_MainWindow(object):
         self.label_14.setText(_translate("MainWindow", "5"))
         self.label_15.setText(_translate("MainWindow", "≤ X"))
         self.label_16.setText(_translate("MainWindow", "≤"))
-        self.ButtonEdytujKostke.setText(_translate("MainWindow", "Edytuj kostkę"))
         self.Epsilon.setTitle(_translate("MainWindow", "Epsilon"))
         self.LBox.setTitle(_translate("MainWindow", "L - max. ilość iter."))
         self.ButtonEdytujEpsL.setText(_translate("MainWindow", "Edytuj"))
@@ -2840,7 +2813,55 @@ class Ui_MainWindow(object):
         self.ButtonKrokOptimum.setText(_translate("MainWindow", "Pokaż optimum"))
         self.ButtonDanyKrok.setText(_translate("MainWindow", "Pokaż dany krok"))
         self.ButtonWyrysuj.setText(_translate("MainWindow", "Wyrysuj warstwicę"))
-
+        
+        
+    def CustomFunctions(self):
+        self.ButtonAnaliza.clicked.connect(self.click_analiza)##########
+        self.ButtonObliczOptimum.clicked.connect(self.click_znajdz)##########
+        self.ButtonDanyKrok.clicked.connect(self.pokaz_krok)##########
+        self.ButtonKrokOptimum.clicked.connect(self.pokaz_optimum)##########
+        self.ButtonWyrysuj.clicked.connect(self.wyrysuj_warstwice)##########
+        self.txtIloscKrokow.textChanged.connect(self.scroll_zmien_max)
+        #self.txtKrok.textChanged.connect(self.scroll_zmien_wart)
+        '''
+        Coś się psuło
+        '''
+        self.ScrollKrok.valueChanged.connect(self.tekst_krok_wart)
+        
+    
+    def pokaz_krok(self):
+        self.txtIloscKrokow.clear()
+        self.txtIloscKrokow.insert("100")
+        tmp_max = float(self.txtIloscKrokow.text())
+        tmp_krok = float(self.txtKrok.text())
+        
+        if tmp_max < tmp_krok:
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Critical)
+            msg.setText("Wartość wybranego kroku przekracza całkowitą ilość kroków.")
+            msg.setWindowTitle("Błąd wprowadzenia wartości kroku!")
+            msg.exec_()
+            
+    def scroll_zmien_max(self):
+        if np.isnan(int(self.txtIloscKrokow.text())) == 0:
+            self.ScrollKrok.setMaximum(int(self.txtIloscKrokow.text()))
+    '''
+    def scroll_zmien_wart(self):
+        pokazdupe = np.isnan(int(self.txtKrok.text()))
+        print(pokazdupe)
+        if pokazdupe == 0:
+            if self.txtKrok.text() != '':
+                if self.txtKrok.text() > 0:
+                    self.ScrollKrok.setValue(int(self.txtKrok.text()))'''
+        
+    def tekst_krok_wart(self):
+        self.txtKrok.setText(str(self.ScrollKrok.value()))
+            
+    def pokaz_optimum(self):
+        a = 1
+    def wyrysuj_warstwice(self):
+        a = 1
+            
     def click_analiza(self):
         print('click_analiza - zadzialal')
         pa3.argm = pa3.start_eval(self.txtFunkcja.text())
@@ -2893,14 +2914,6 @@ class Ui_MainWindow(object):
 
   
         #pa3.nelder_mead(self.txtFunkcja.text(), pa3.f, start)
-
-
-
-       
-
-
-
-
 
 if __name__ == "__main__":
     import sys
