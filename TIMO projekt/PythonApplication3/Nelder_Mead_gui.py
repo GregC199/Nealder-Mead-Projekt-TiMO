@@ -10,6 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import PythonApplication3 as pa3
+import numpy as np
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -2776,6 +2777,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         
+        self.txtIloscKrokow.setReadOnly(1)
+        
         self.CustomFunctions()
 
     def retranslateUi(self, MainWindow):
@@ -2818,9 +2821,42 @@ class Ui_MainWindow(object):
         self.ButtonDanyKrok.clicked.connect(self.pokaz_krok)##########
         self.ButtonKrokOptimum.clicked.connect(self.pokaz_optimum)##########
         self.ButtonWyrysuj.clicked.connect(self.wyrysuj_warstwice)##########
+        self.txtIloscKrokow.textChanged.connect(self.scroll_zmien_max)
+        #self.txtKrok.textChanged.connect(self.scroll_zmien_wart)
+        '''
+        Coś się psuło
+        '''
+        self.ScrollKrok.valueChanged.connect(self.tekst_krok_wart)
+        
     
     def pokaz_krok(self):
-        a = 1
+        self.txtIloscKrokow.clear()
+        self.txtIloscKrokow.insert("100")
+        tmp_max = float(self.txtIloscKrokow.text())
+        tmp_krok = float(self.txtKrok.text())
+        
+        if tmp_max < tmp_krok:
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Critical)
+            msg.setText("Wartość wybranego kroku przekracza całkowitą ilość kroków.")
+            msg.setWindowTitle("Błąd wprowadzenia wartości kroku!")
+            msg.exec_()
+            
+    def scroll_zmien_max(self):
+        if np.isnan(int(self.txtIloscKrokow.text())) == 0:
+            self.ScrollKrok.setMaximum(int(self.txtIloscKrokow.text()))
+    '''
+    def scroll_zmien_wart(self):
+        pokazdupe = np.isnan(int(self.txtKrok.text()))
+        print(pokazdupe)
+        if pokazdupe == 0:
+            if self.txtKrok.text() != '':
+                if self.txtKrok.text() > 0:
+                    self.ScrollKrok.setValue(int(self.txtKrok.text()))'''
+        
+    def tekst_krok_wart(self):
+        self.txtKrok.setText(str(self.ScrollKrok.value()))
+            
     def pokaz_optimum(self):
         a = 1
     def wyrysuj_warstwice(self):
