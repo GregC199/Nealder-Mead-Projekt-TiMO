@@ -2845,14 +2845,6 @@ class Ui_MainWindow(object):
     def scroll_zmien_max(self):
         if np.isnan(int(self.txtIloscKrokow.text())) == 0:
             self.ScrollKrok.setMaximum(int(self.txtIloscKrokow.text()))
-    '''
-    def scroll_zmien_wart(self):
-        pokazdupe = np.isnan(int(self.txtKrok.text()))
-        print(pokazdupe)
-        if pokazdupe == 0:
-            if self.txtKrok.text() != '':
-                if self.txtKrok.text() > 0:
-                    self.ScrollKrok.setValue(int(self.txtKrok.text()))'''
         
     def tekst_krok_wart(self):
         self.txtKrok.setText(str(self.ScrollKrok.value()))
@@ -2860,6 +2852,8 @@ class Ui_MainWindow(object):
     def pokaz_optimum(self):
         a = 1
     def wyrysuj_warstwice(self):
+
+
         a = 1
             
     def click_analiza(self):
