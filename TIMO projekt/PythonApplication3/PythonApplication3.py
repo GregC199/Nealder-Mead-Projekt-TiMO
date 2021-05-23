@@ -12,7 +12,10 @@ Reference: https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
 f_str = ''
 l_x = 0
 argm = 0
-def f(f_str,x):
+simplexes = []
+best_points = []
+
+def f(x):
     x1,x2,x3,x4,x5 = sympy.symbols('x1 x2 x3 x4 x5')
     l_x = len(x)
     if l_x  == 2:
@@ -33,30 +36,20 @@ def f(f_str,x):
         x3 = x[2]
         x4 = x[3]
         x5 = x[4]
+    print(f_str)
     return eval(f_str)
 
 
-def nelder_mead(f_str,f, x_start,
+def nelder_mead(f, x_start,
                 step=0.1, no_improve_thr=10e-3,
                 no_improv_break=10, max_iter=0,
                 alpha=1., gamma=2., rho=-0.5, sigma=0.5):
-    '''
-        @param f (function): function to optimize, must return a scalar score
-            and operate over a numpy array of the same dimensions as x_start
-        @param x_start (numpy array): initial position
-        @param step (float): look-around radius in initial step
-        @no_improv_thr,  no_improv_break (float, int): break after no_improv_break iterations with
-            an improvement lower than no_improv_thr
-        @max_iter (int): always break after this number of iterations.
-            Set it to 0 to loop indefinitely.
-        @alpha, gamma, rho, sigma (floats): parameters of the algorithm
-            (see Wikipedia page for reference)
-        return: tuple (best parameter array, best score)
-        '''
 
     # init
+    global best_points
+    global simplexes
     dim = len(x_start)
-    prev_best = f(f_str,x_start)
+    prev_best = f(x_start)
     no_improv = 0
     res = [[x_start, prev_best]]
     bestlist = []
@@ -64,7 +57,7 @@ def nelder_mead(f_str,f, x_start,
     for i in range(dim):
         x = copy.copy(x_start) #tworzenie punktów początkowych 1. kopia startowego
         x[i] = x[i] + step # 2. stworzenie nowego punktu po przesunieciu kopii w jednym wymiarze o step
-        score = f(f_str,x) #wyliczenie wartosci funkcji w nowym punkcie
+        score = f(x) #wyliczenie wartosci funkcji w nowym punkcie
         res.append([x, score]) #dodanie nowego zestawu argumentow i wartosci funkcji do listy
 
     # simplex iter
@@ -75,9 +68,18 @@ def nelder_mead(f_str,f, x_start,
         res.sort(key=lambda x: x[1])
         best = res[0][1]
         bestlist.append(res[0][1]) 
+
+        simplexes.append(res[0])
+        simplexes.append(res[1])
+        simplexes.append(res[2])
+
+        print('test')
+        print(res[0][0][0],res[0][0][1],res[0][1])
+        print(*simplexes,sep='\n')
         # break after max_iter
         if max_iter and iters >= max_iter:
             print('best val',res[0])
+            best_points = bestlist
             return bestlist
             #return res[0]
 
@@ -94,6 +96,7 @@ def nelder_mead(f_str,f, x_start,
 
         if no_improv >= no_improv_break:
             print('best val',res[0])
+            best_points = bestlist
             return bestlist
 
         # centroid
@@ -104,7 +107,7 @@ def nelder_mead(f_str,f, x_start,
 
         # reflection
         xr = x0 + alpha*(x0 - res[-1][0])
-        rscore = f(f_str,xr)
+        rscore = f(xr)
         if res[0][1] <= rscore < res[-2][1]:
             del res[-1]
             res.append([xr, rscore])
@@ -113,7 +116,7 @@ def nelder_mead(f_str,f, x_start,
         # expansion
         if rscore < res[0][1]:
             xe = x0 + gamma*(x0 - res[-1][0])
-            escore = f(f_str,xe)
+            escore = f(xe)
             if escore < rscore:
                 del res[-1]
                 res.append([xe, escore])
@@ -125,7 +128,7 @@ def nelder_mead(f_str,f, x_start,
 
         # contraction
         xc = x0 + rho*(x0 - res[-1][0])
-        cscore = f(f_str,xc)
+        cscore = f(xc)
         if cscore < res[-1][1]:
             del res[-1]
             res.append([xc, cscore])
@@ -136,16 +139,18 @@ def nelder_mead(f_str,f, x_start,
         nres = []
         for tup in res:
             redx = x1 + sigma*(tup[0] - x1)
-            score = f(f_str,redx)
+            score = f(redx)
             nres.append([redx, score])
         res = nres
 
 
-def algorytm(f_str,start):
+def algorytm(start):
 
-    result = nelder_mead(f_str, f, start)
+    result = nelder_mead(f, start)
     #print(result)
     print(*result, sep='\n')
+    print('dupa')
+    print(*simplexes,sep='\n')
 
 def start_rand(arguments): #przyjmuje ilosc argumentów i tworzy wektor startowy
     while itr < arguments:
@@ -158,18 +163,20 @@ def start_rand(arguments): #przyjmuje ilosc argumentów i tworzy wektor startowy
         itr = itr +1
     return start
 
-def start_eval(f_str):
+def start_eval(temp_str):
 
     #print('Input your expression:')
     #f_str = input()
     str_arg = 'x0'
     itr = 0
     arguments = 0
-    print(f_str)
+    global f_str
+    f_str = temp_str
+    print('taki chuj',f_str)
     f_str = f_str.replace('^','**')
     f_str = f_str.replace('pi','math.pi')
     f_str = f_str.replace('sin','math.sin')
-
+    print('taki chuj po poprawkach',f_str)
     while itr < 5:
         old_str = str(itr)
         new_str = str(itr+1)

@@ -2889,7 +2889,9 @@ class Ui_MainWindow(object):
             start[3] = pa3.random.uniform(int(self.txtAX4.text()),int(self.txtBX4.text()))
         if pa3.argm >= 5:
             start[4] = pa3.random.uniform(int(self.txtAX5.text()),int(self.txtBX5.text()))
-        pa3.algorytm(pa3.f_str,start)
+        pa3.algorytm(start)
+
+  
         #pa3.nelder_mead(self.txtFunkcja.text(), pa3.f, start)
 
 
