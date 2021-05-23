@@ -2801,6 +2801,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.addLayout(self.BoxObsluga)
         MainWindow.setCentralWidget(self.centralwidget)
         self.ButtonAnaliza.clicked.connect(self.click_analiza)##########
+        self.ButtonObliczOptimum.clicked.connect(self.click_znajdz)##########
+
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -2840,23 +2842,67 @@ class Ui_MainWindow(object):
         self.ButtonWyrysuj.setText(_translate("MainWindow", "Wyrysuj warstwicę"))
 
     def click_analiza(self):
-        print('dupa')
-        arguments = pa3.start_eval(self.txtFunkcja.text())
+        print('click_analiza - zadzialal')
+        pa3.argm = pa3.start_eval(self.txtFunkcja.text())
         print(pa3.start_eval(self.txtFunkcja.text()))
-        if arguments == 2:
+
+        if pa3.argm >= 2:
             self.txtAX1.setEnabled(1)
             self.txtBX1.setEnabled(1)
             self.txtAX2.setEnabled(1)
             self.txtBX2.setEnabled(1)
-        if arguments ==3:
+        else:
+            self.txtAX1.setEnabled(0)
+            self.txtBX1.setEnabled(0)
+            self.txtAX2.setEnabled(0)
+            self.txtBX2.setEnabled(0)
+
+        if pa3.argm >= 3:
             self.txtAX3.setEnabled(1)
             self.txtBX3.setEnabled(1)
-        if arguments ==4:
+        else:
+            self.txtAX3.setEnabled(0)
+            self.txtBX3.setEnabled(0)
+
+        if pa3.argm >= 4:
             self.txtAX4.setEnabled(1)
             self.txtBX4.setEnabled(1)
-        if arguments ==5:
+        else:
+            self.txtAX4.setEnabled(0)
+            self.txtBX4.setEnabled(0)
+
+        if pa3.argm >= 5:
             self.txtAX5.setEnabled(1)
             self.txtBX5.setEnabled(1)
+        else:
+            self.txtAX5.setEnabled(0)
+            self.txtBX5.setEnabled(0)
+
+    def click_znajdz(self):
+        start = np.empty(pa3.argm)
+        while itr < arguments:
+            print('x',itr+1)
+            print('a')
+            rnd_a = int(input()) #zakresy do random.uniform musi zassysać skądś po wciśnięciu przycisku na GUI
+            print('b')
+            rnd_b = int(input())
+            start[itr] = random.uniform(-rnd_a, rnd_b) #nie wiem co z tym whilem calym
+            itr = itr +1
+            if pa3.argm >= 2:
+                start[0] = random.uniform(int(self.txtAX1.text(),int(self.txtBX1.text())))
+                start[1] = random.uniform(int(self.txtAX2.text(),int(self.txtBX2.text())))
+            if pa3.argm >= 3:
+                start[2] = random.uniform(int(self.txtAX3.text(),int(self.txtBX3.text())))
+            if pa3.argm >= 4:
+                start[3] = random.uniform(int(self.txtAX4.text(),int(self.txtBX4.text())))
+            if pa3.argm >= 5:
+                start[4] = random.uniform(int(self.txtAX5.text(),int(self.txtBX5.text())))
+        pa3.algorytm(self.txtFunkcja.text(),start)
+        #pa3.nelder_mead(self.txtFunkcja.text(), pa3.f, start)
+
+
+
+       
 
 
 
