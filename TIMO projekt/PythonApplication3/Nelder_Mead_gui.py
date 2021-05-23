@@ -11,7 +11,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import PythonApplication3 as pa3
 
-from PythonApplication3 import PythonApplication3
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -2920,7 +2919,7 @@ class Ui_MainWindow(object):
         self.BoxObsluga.addWidget(self.BoxPrawy)
         self.verticalLayout_7.addLayout(self.BoxObsluga)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.ButtonAnaliza.clicked.connect(self.click_analiza())############
+        self.ButtonAnaliza.clicked.connect(self.click_analiza)############
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
     
@@ -2962,21 +2961,21 @@ class Ui_MainWindow(object):
 
     def click_analiza(self):
         arguments = pa3.start_eval(self.Konsola.toPlainText())
-        print(start_eval(Konsola.toPlainText()))
+        print(pa3.start_eval(self.Konsola.toPlainText()))
         if arguments <= 2:
-            self.txtAX1.setEnabled(true)
-            self.txtBX1.setEnabled(true)
-            self.txtAX2.setEnabled(true)
-            self.txtBX2.setEnabled(true)
+            self.txtAX1.setEnabled(1)
+            self.txtBX1.setEnabled(1)
+            self.txtAX2.setEnabled(1)
+            self.txtBX2.setEnabled(1)
         if arguments <=3:
-            self.txtAX3.setEnabled(true)
-            self.txtBX3.setEnabled(true)
+            self.txtAX3.setEnabled(1)
+            self.txtBX3.setEnabled(1)
         if arguments <=4:
-            self.txtAX4.setEnabled(true)
-            self.txtBX4.setEnabled(true)
+            self.txtAX4.setEnabled(1)
+            self.txtBX4.setEnabled(1)
         if arguments <=5:
-            self.txtAX5.setEnabled(true)
-            self.txtBX5.setEnabled(true)
+            self.txtAX5.setEnabled(1)
+            self.txtBX5.setEnabled(1)
 
 
 if __name__ == "__main__":
