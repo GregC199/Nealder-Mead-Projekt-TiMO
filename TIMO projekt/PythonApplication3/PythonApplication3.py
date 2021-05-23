@@ -164,7 +164,7 @@ def start_eval(f_str):
     str_arg = 'x0'
     itr = 0
     arguments = 0
-
+    print(f_str)
     f_str = f_str.replace('^','**')
     f_str = f_str.replace('pi','math.pi')
     f_str = f_str.replace('sin','math.sin')
@@ -182,10 +182,9 @@ def start_eval(f_str):
             break
         itr = itr + 1
 
-    start = np.empty(arguments)
-    itr = 0
+    #start = np.empty(arguments)
+    #itr = 0
     print('Function has',arguments,'arguments')
-    print('Input a b for random number generation:')
     return arguments
     
     #start = start_rand(arguments)

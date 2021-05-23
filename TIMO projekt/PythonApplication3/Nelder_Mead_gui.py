@@ -2960,20 +2960,23 @@ class Ui_MainWindow(object):
      #   self.ButtonAnaliza.clicked.connect(click_analiza())
 
     def click_analiza(self):
-        arguments = pa3.start_eval(self.Konsola.toPlainText())
-        print(pa3.start_eval(self.Konsola.toPlainText()))
-        if arguments <= 2:
+        print('dupa')
+        text1 = self.Konsola.toPlainText()
+        print(text1)
+        arguments = pa3.start_eval(text1)
+        print(pa3.start_eval(text1))
+        if arguments == 2:
             self.txtAX1.setEnabled(1)
             self.txtBX1.setEnabled(1)
             self.txtAX2.setEnabled(1)
             self.txtBX2.setEnabled(1)
-        if arguments <=3:
+        if arguments ==3:
             self.txtAX3.setEnabled(1)
             self.txtBX3.setEnabled(1)
-        if arguments <=4:
+        if arguments ==4:
             self.txtAX4.setEnabled(1)
             self.txtBX4.setEnabled(1)
-        if arguments <=5:
+        if arguments ==5:
             self.txtAX5.setEnabled(1)
             self.txtBX5.setEnabled(1)
 
