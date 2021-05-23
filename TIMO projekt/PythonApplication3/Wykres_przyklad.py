@@ -53,5 +53,5 @@ df.head()
 plt.plot(df['x'], df['y'])
 plt.plot(df['x'], df['y'],'o')
 plt.contourf(X, Y, Z, 20, cmap='jet')
-plt.colorbar();
+plt.colorbar()
 plt.show()

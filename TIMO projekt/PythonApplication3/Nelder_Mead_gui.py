@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import PythonApplication3 as pa3
 import numpy as np
 from pip._vendor.html5lib.treebuilders.etree_lxml import tostring
-import matplotlib
+import matplotlib 
 from PyQt5.Qt import QVBoxLayout
 matplotlib.use('Qt5Agg')
 
@@ -26,7 +26,7 @@ matplotlib.use('QT5Agg')
 
 f_str='x**2+y*x+0.5*y**2-x-y'
 
-def f(x, y):
+def f(x1, x2):
     return eval(f_str)
 
 class MplCanvas(Canvas):
@@ -2937,6 +2937,12 @@ class Ui_MainWindow(object):
         sc.canvas.ax.plot(x, y,'o')
         sc.canvas.ax.contourf(X, Y, Z, 20, cmap='jet')
         #sc.canvas.fig.colorbar()
+
+        #cmap = matplotlib.cm.cool
+        #norm = matplotlib.colors.Normalize(np.amin(Z), np.amax(Z))
+
+  #     sc.canvas.fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap),
+   #          cax=sc.canvas.ax)
         
         sc.canvas.draw()
         
@@ -2944,8 +2950,12 @@ class Ui_MainWindow(object):
             
     def click_analiza(self):
         print('click_analiza - zadzialal')
+        global f_str
         pa3.argm = pa3.start_eval(self.txtFunkcja.text())
-        print(pa3.start_eval(self.txtFunkcja.text()))
+        f_str = self.txtFunkcja.text()
+        f_str = f_str.replace('^','**')
+        f_str = f_str.replace('pi','math.pi')
+        f_str = f_str.replace('sin','math.sin')
 
         if pa3.argm >= 2:
             self.txtAX1.setEnabled(1)
