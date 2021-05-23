@@ -2800,9 +2800,8 @@ class Ui_MainWindow(object):
         self.BoxObsluga.addWidget(self.BoxPrawy)
         self.verticalLayout_7.addLayout(self.BoxObsluga)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.ButtonAnaliza.clicked.connect(self.click_analiza)##########
-        self.ButtonObliczOptimum.clicked.connect(self.click_znajdz)##########
 
+        self.CustomFunctions()
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -2840,6 +2839,11 @@ class Ui_MainWindow(object):
         self.ButtonKrokOptimum.setText(_translate("MainWindow", "Pokaż optimum"))
         self.ButtonDanyKrok.setText(_translate("MainWindow", "Pokaż dany krok"))
         self.ButtonWyrysuj.setText(_translate("MainWindow", "Wyrysuj warstwicę"))
+    
+    def CustomFunctions(self):
+        self.ButtonAnaliza.clicked.connect(self.click_analiza)##########
+        self.ButtonObliczOptimum.clicked.connect(self.click_znajdz)##########
+
 
     def click_analiza(self):
         print('click_analiza - zadzialal')
