@@ -2809,7 +2809,7 @@ class Ui_MainWindow(object):
         self.label_16.setText(_translate("MainWindow", "≤"))
         self.Epsilon.setTitle(_translate("MainWindow", "Epsilon"))
         self.LBox.setTitle(_translate("MainWindow", "L - max. ilość iter."))
-        self.ButtonEdytujEpsL.setText(_translate("MainWindow", "Edytuj"))
+        self.ButtonEdytujEpsL.setText(_translate("MainWindow", "Edytuj L"))
         self.BoxKroki.setTitle(_translate("MainWindow", "Podgląd kolejnych kroków"))
         self.label_5.setText(_translate("MainWindow", "Ilość kroków:"))
         self.label_6.setText(_translate("MainWindow", "Krok:"))
