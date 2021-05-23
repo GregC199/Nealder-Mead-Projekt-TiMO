@@ -13,16 +13,38 @@ import PythonApplication3 as pa3
 import numpy as np
 from pip._vendor.html5lib.treebuilders.etree_lxml import tostring
 import matplotlib
+from PyQt5.Qt import QVBoxLayout
 matplotlib.use('Qt5Agg')
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT as NavigationToolbar
+
 from matplotlib.figure import Figure
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as Canvas
+import matplotlib
+import matplotlib.pyplot as plt
 
+# Ensure using PyQt5 backend
+matplotlib.use('QT5Agg')
 
-class MplCanvas(FigureCanvasQTAgg):
-    def __init__(self, parent=None, width=5, height=4, dpi=100):
-        fig = Figure(figsize=(width, height), dpi=dpi)
-        self.axes = fig.add_subplot(111)
-        super(MplCanvas, self).__init__(fig)
+f_str='x**2+y*x+0.5*y**2-x-y'
+
+def f(x, y):
+    return eval(f_str)
+
+class MplCanvas(Canvas):
+    def __init__(self):
+        self.fig = Figure()
+        self.ax = self.fig.add_subplot(111)
+        Canvas.__init__(self, self.fig)
+        Canvas.setSizePolicy(self, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        Canvas.updateGeometry(self)
+        
+# Matplotlib widget
+class MplWidget(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        QtWidgets.QWidget.__init__(self, parent)   # Inherit from QWidget
+        self.canvas = MplCanvas()                  # Create canvas object
+        self.vbl = QtWidgets.QVBoxLayout()         # Set box for plotting
+        self.vbl.addWidget(self.canvas)
+        self.setLayout(self.vbl)
 
 class Ui_MainWindow(object):
     L = 0
@@ -2888,18 +2910,37 @@ class Ui_MainWindow(object):
         a = 1
         
     def wyrysuj_warstwice(self):
-        sc = MplCanvas(self.frame_2, width=5, height=4, dpi=100)
-        sc.axes.plot([0,1,2,3,4], [10,1,20,3,40])
+        sc = MplWidget(self.frame_2)
         
-                # Create toolbar, passing canvas as first parament, parent (self, the MainWindow) as second.
-        toolbar1 = NavigationToolbar(sc, self)
+        layout = QtWidgets.QGridLayout()
+        layout.addWidget(sc)
+        self.frame_2.setLayout(layout)
+        
+        x=range(0, 10)
+        y=range(0, 20, 2)
 
-        layout1 = QtWidgets.QVBoxLayout()
-        layout1.addWidget(toolbar)
-        layout1.addWidget(sc)
-
-        # Create a placeholder widget to hold our toolbar and canvas.
-        self.frame_2.setLayout(layout1)
+        
+        x1 = np.linspace(-8, 8, 50)
+        y1 = np.linspace(-8, 8, 40)
+        
+        X, Y = np.meshgrid(x1, y1)
+        Z = f(X, Y)
+        
+        arrPunktowX = [1, 3]
+        arrPunktowY = [1, 3]
+        
+        x = arrPunktowX
+        y = arrPunktowY
+        
+        
+        sc.canvas.ax.plot(x, y)
+        sc.canvas.ax.plot(x, y,'o')
+        sc.canvas.ax.contourf(X, Y, Z, 20, cmap='jet')
+        #sc.canvas.fig.colorbar()
+        
+        sc.canvas.draw()
+        
+        
             
     def click_analiza(self):
         print('click_analiza - zadzialal')
