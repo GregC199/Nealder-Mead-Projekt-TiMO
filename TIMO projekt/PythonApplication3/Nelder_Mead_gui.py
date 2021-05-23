@@ -2813,6 +2813,7 @@ class Ui_MainWindow(object):
         self.ButtonKrokOptimum.setText(_translate("MainWindow", "Pokaż optimum"))
         self.ButtonDanyKrok.setText(_translate("MainWindow", "Pokaż dany krok"))
         self.ButtonWyrysuj.setText(_translate("MainWindow", "Wyrysuj warstwicę"))
+        self.txtL.setPlaceholderText(_translate("MainWindow", "Domyślnie ∞"))
         
         
     def CustomFunctions(self):
@@ -2901,6 +2902,9 @@ class Ui_MainWindow(object):
             self.txtBX5.setEnabled(0)
 
     def click_znajdz(self):
+        pa3.L = 0
+        if int(self.txtL.text()) > 0:
+            pa3.L = int(self.txtL.text())
         start = pa3.np.empty(pa3.argm)
         if pa3.argm >= 2:
             start[0] = pa3.random.uniform(int(self.txtAX1.text()),int(self.txtBX1.text()))
