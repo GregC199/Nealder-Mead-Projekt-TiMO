@@ -10,8 +10,6 @@ Pure Python/Numpy implementation of the Nelder-Mead algorithm.
 Reference: https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
 '''
 
-l_x = 0;
-
 l_x = 0
 def f(f_str,x):
     x1,x2,x3,x4,x5 = sympy.symbols('x1 x2 x3 x4 x5')

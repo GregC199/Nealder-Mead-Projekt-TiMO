@@ -11,8 +11,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import PythonApplication3 as pa3
 
-from PythonApplication3 import PythonApplication3
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
