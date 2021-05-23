@@ -355,6 +355,9 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.txtFunkcja.sizePolicy().hasHeightForWidth())
         self.txtFunkcja.setSizePolicy(sizePolicy)
         self.txtFunkcja.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.txtFunkcja.setFont(font)
         self.txtFunkcja.setMouseTracking(True)
         self.txtFunkcja.setAutoFillBackground(True)
         self.txtFunkcja.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -1453,6 +1456,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Algorytm Neldera-Meada"))
         self.label.setText(_translate("MainWindow", "Fmin:"))
+        self.txtFunkcja.setPlaceholderText(_translate("MainWindow", "Tu wprowadź funkcję"))
         self.ButtonAnaliza.setText(_translate("MainWindow", "Analizuj funkcję"))
         self.ButtonObliczOptimum.setText(_translate("MainWindow", "Znajdź optimum!"))
         self.BoxKostka.setTitle(_translate("MainWindow", "Kostka"))

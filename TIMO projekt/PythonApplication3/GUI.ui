@@ -988,6 +988,11 @@
            <height>40</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="mouseTracking">
           <bool>true</bool>
          </property>
@@ -1004,6 +1009,31 @@
           <enum>Qt::ScrollBarAlwaysOff</enum>
          </property>
          <property name="undoRedoEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="placeholderText">
+          <string>Tu wprowadź funkcję</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ButtonAnaliza">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Analizuj funkcję</string>
+         </property>
+         <property name="default">
           <bool>true</bool>
          </property>
         </widget>
@@ -2363,7 +2393,7 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>256</height>
+             <height>262</height>
             </size>
            </property>
            <property name="palette">
@@ -2821,10 +2851,25 @@
             <number>2</number>
            </property>
            <layout class="QGridLayout" name="gridLayout">
+            <property name="leftMargin">
+             <number>2</number>
+            </property>
+            <property name="topMargin">
+             <number>2</number>
+            </property>
+            <property name="rightMargin">
+             <number>2</number>
+            </property>
+            <property name="bottomMargin">
+             <number>2</number>
+            </property>
+            <property name="spacing">
+             <number>2</number>
+            </property>
             <item row="0" column="0">
              <widget class="QGroupBox" name="BoxKroki">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -3664,7 +3709,7 @@
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>30</height>
+                   <height>25</height>
                   </size>
                  </property>
                  <property name="orientation">
