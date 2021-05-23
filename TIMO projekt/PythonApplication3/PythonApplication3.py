@@ -14,6 +14,7 @@ l_x = 0
 argm = 0
 simplexes = []
 best_points = []
+epsilon = 1e-3
 
 def f(x):
     x1,x2,x3,x4,x5 = sympy.symbols('x1 x2 x3 x4 x5')
@@ -41,7 +42,7 @@ def f(x):
 
 
 def nelder_mead(f, x_start,
-                step=0.1, no_improve_thr=10e-3,
+                step=0.1, no_improve_thr=epsilon,
                 no_improv_break=10, max_iter=0,
                 alpha=1., gamma=2., rho=-0.5, sigma=0.5):
 
