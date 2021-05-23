@@ -14,6 +14,7 @@ l_x = 0
 argm = 0
 simplexes = []
 best_points = []
+centroids = []
 epsilon = 1e-3
 L = 0
 
@@ -51,6 +52,7 @@ def nelder_mead(f, x_start, max_iter=0,
     global best_points
     global simplexes
     global L
+    global centroids
     max_iter = L
     dim = len(x_start)
     prev_best = f(x_start)
@@ -141,7 +143,9 @@ def nelder_mead(f, x_start, max_iter=0,
         if cscore < res[-1][1]:
             del res[-1]
             res.append([xc, cscore])
+            centroids.append([xc,cscore])
             continue
+
 
         # reduction
         x1 = res[0][0]
@@ -184,11 +188,9 @@ def start_eval(temp_str):
     arguments = 0
     global f_str
     f_str = temp_str
-    print('taki chuj',f_str)
     f_str = f_str.replace('^','**')
     f_str = f_str.replace('pi','math.pi')
     f_str = f_str.replace('sin','math.sin')
-    print('taki chuj po poprawkach',f_str)
     while itr < 5:
         old_str = str(itr)
         new_str = str(itr+1)
@@ -210,4 +212,32 @@ def start_eval(temp_str):
     #start = start_rand(arguments)
 
     #algorytm(f_str,start) #wywolanie czesci z algorytmem - podanie stringa funkcji i argumentow startowych
- 
+def give_simplex(step,vert):
+    itr = 0
+    itr2 = 0
+    global simplexes
+    points = []
+    point = []
+    
+    while itr <= 2:#length(pa3.simplexes):
+        point.append(simplexes[step+itr][0][0])
+        point.append(simplexes[step+itr][0][1])
+        point.append(simplexes[step+itr][1])
+        points.append(point)
+        print('testchuj')
+        print(points)
+        itr = itr + 1
+    return points[vert]
+
+def give_centroid(step):
+    global centroids
+    cent = []
+    cent.append(centroids[step][0][0])
+    cent.append(centroids[step][0][1])
+    cent.append(centroids[step][1])
+    print(cent)
+    return cent
+
+def give_bestpoint(step):
+    return best_points[step]
+             

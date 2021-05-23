@@ -2848,6 +2848,7 @@ class Ui_MainWindow(object):
     def L_change(self):
         self.L = int(self.txtL.text())
         print('zmieniam L ')
+
     def pokaz_krok(self):
         self.txtIloscKrokow.clear()
         self.txtIloscKrokow.insert("100")
@@ -2860,7 +2861,20 @@ class Ui_MainWindow(object):
             msg.setText("Wartość wybranego kroku przekracza całkowitą ilość kroków.")
             msg.setWindowTitle("Błąd wprowadzenia wartości kroku!")
             msg.exec_()
-            
+        self.Konsola.clear()
+        self.Konsola.append('Centroid:')
+        self.Konsola.append(str(pa3.give_centroid(self.ScrollKrok.value())))
+        self.Konsola.append('Najlepszy punkt:')
+        self.Konsola.append(str(pa3.give_bestpoint(self.ScrollKrok.value())))
+        self.Konsola.append('Wierzchołki simpleksu:')
+        self.Konsola.append('Wierzchołek 1:')
+        self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),0)))
+        self.Konsola.append('Wierzchołek 2:')
+        self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),1)))
+        self.Konsola.append('Wierzchołek 3:')
+        self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),2)))
+
+
     def scroll_zmien_max(self):
         if self.txtIloscKrokow.text() != '':
             if np.isnan(int(self.txtIloscKrokow.text())) == 0:

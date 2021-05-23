@@ -31,11 +31,13 @@ plt.style.use('seaborn-white')
 import numpy as np
 import pandas as pd
 
-def f(x, y):
-    return np.sin(x) ** 10 + np.cos(10 + y * x) * np.cos(x)
+f_str='x**2+y*x+0.5*y**2-x-y'
 
-x = np.linspace(0, 5, 50)
-y = np.linspace(0, 5, 40)
+def f(x, y):
+    return eval(f_str)#np.sin(x) ** 10 + np.cos(10 + y * x) * np.cos(x)
+
+x = np.linspace(-8, 8, 50)
+y = np.linspace(-8, 8, 40)
 
 X, Y = np.meshgrid(x, y)
 Z = f(X, Y)
