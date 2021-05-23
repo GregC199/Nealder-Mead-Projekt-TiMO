@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import PythonApplication3 as pa3
 
 
 class Ui_MainWindow(object):
@@ -2918,10 +2919,10 @@ class Ui_MainWindow(object):
         self.BoxObsluga.addWidget(self.BoxPrawy)
         self.verticalLayout_7.addLayout(self.BoxObsluga)
         MainWindow.setCentralWidget(self.centralwidget)
-
+        self.ButtonAnaliza.clicked.connect(self.click_analiza())############
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
+    
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Algorytm Neldera-Meada"))
@@ -2955,6 +2956,26 @@ class Ui_MainWindow(object):
         self.ButtonKrokOptimum.setText(_translate("MainWindow", "Pokaż optimum"))
         self.ButtonDanyKrok.setText(_translate("MainWindow", "Pokaż dany krok"))
         self.ButtonWyrysuj.setText(_translate("MainWindow", "Wyrysuj warstwicę"))
+    #def konekty():
+     #   self.ButtonAnaliza.clicked.connect(click_analiza())
+
+    def click_analiza(self):
+        arguments = pa3.start_eval(self.Konsola.toPlainText())
+        print(start_eval(Konsola.toPlainText()))
+        if arguments <= 2:
+            self.txtAX1.setEnabled(true)
+            self.txtBX1.setEnabled(true)
+            self.txtAX2.setEnabled(true)
+            self.txtBX2.setEnabled(true)
+        if arguments <=3:
+            self.txtAX3.setEnabled(true)
+            self.txtBX3.setEnabled(true)
+        if arguments <=4:
+            self.txtAX4.setEnabled(true)
+            self.txtBX4.setEnabled(true)
+        if arguments <=5:
+            self.txtAX5.setEnabled(true)
+            self.txtBX5.setEnabled(true)
 
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ import numpy as np
 Pure Python/Numpy implementation of the Nelder-Mead algorithm.
 Reference: https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
 '''
+l_x = 0
 def f(f_str,x):
     x1,x2,x3,x4,x5 = sympy.symbols('x1 x2 x3 x4 x5')
     l_x = len(x)
@@ -184,8 +185,9 @@ def start_eval(f_str):
     itr = 0
     print('Function has',arguments,'arguments')
     print('Input a b for random number generation:')
+    return arguments
+    
+    #start = start_rand(arguments)
 
-    start = start_rand(arguments)
-
-    algorytm(f_str,start) #wywolanie czesci z algorytmem - podanie stringa funkcji i argumentow startowych
+    #algorytm(f_str,start) #wywolanie czesci z algorytmem - podanie stringa funkcji i argumentow startowych
  
