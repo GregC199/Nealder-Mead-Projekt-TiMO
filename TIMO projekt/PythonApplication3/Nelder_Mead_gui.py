@@ -2953,8 +2953,14 @@ class Ui_MainWindow(object):
 
   #     sc.canvas.fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap),
    #          cax=sc.canvas.ax)
+<<<<<<< HEAD
         self.sc.canvas.draw_idle()
         #self.sc.update()
+=======
+        print('canvasdupa')
+        self.sc.canvas.draw()
+        self.frame_2.DrawChildren
+>>>>>>> branch 'master' of https://github.com/GregC199/Nealder-Mead-Projekt-TiMO
         
             
     def click_analiza(self):
