@@ -2952,7 +2952,7 @@ class Ui_MainWindow(object):
 
   #     sc.canvas.fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap),
    #          cax=sc.canvas.ax)
-        
+        print('canvasdupa')
         self.sc.canvas.draw()
         self.frame_2.DrawChildren
         
