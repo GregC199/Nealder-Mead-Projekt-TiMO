@@ -51,9 +51,11 @@ class MplWidget(QtWidgets.QWidget):
         self.vbl = QtWidgets.QVBoxLayout()         # Set box for plotting
         self.vbl.addWidget(self.canvas)
         self.setLayout(self.vbl)
+        
 
 class Ui_MainWindow(object):
     L = 0
+    layout = QtWidgets.QGridLayout()
     
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -2917,13 +2919,12 @@ class Ui_MainWindow(object):
         
     def wyrysuj_warstwice(self):
         self.sc = MplWidget(self.frame_2)
-        self.sc.canvas.fig.clf()
         self.sc.canvas.ax.cla()
-        self.sc.reinit(self.frame_2)
         
-        layout = QtWidgets.QGridLayout()
-        layout.addWidget(self.sc)
-        self.frame_2.setLayout(layout)
+        
+        self.layout = QtWidgets.QGridLayout()
+        self.layout.addWidget(self.sc)
+        self.frame_2.setLayout(self.layout)
         
         x=range(0, 10)
         y=range(0, 20)
@@ -2952,9 +2953,8 @@ class Ui_MainWindow(object):
 
   #     sc.canvas.fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap),
    #          cax=sc.canvas.ax)
-        
-        self.sc.canvas.draw()
-        self.frame_2.DrawChildren
+        self.sc.canvas.draw_idle()
+        #self.sc.update()
         
             
     def click_analiza(self):
@@ -2965,7 +2965,7 @@ class Ui_MainWindow(object):
         f_str = f_str.replace('^','**')
         f_str = f_str.replace('pi','math.pi')
         f_str = f_str.replace('sin','math.sin')
-
+        print('Funkcja: ', f_str)
         if pa3.argm >= 2:
             self.txtAX1.setEnabled(1)
             self.txtBX1.setEnabled(1)
