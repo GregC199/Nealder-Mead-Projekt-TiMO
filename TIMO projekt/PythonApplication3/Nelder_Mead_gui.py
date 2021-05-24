@@ -2921,9 +2921,9 @@ class Ui_MainWindow(object):
         self.sc.canvas.ax.cla()
         self.sc.reinit(self.frame_2)
         
-        layout = QtWidgets.QGridLayout()
-        layout.addWidget(self.sc)
-        self.frame_2.setLayout(layout)
+        self.layout = QtWidgets.QGridLayout()
+        self.layout.addWidget(self.sc)
+        self.frame_2.setLayout(self.layout)
         
         x=range(0, 10)
         y=range(0, 20)
@@ -2954,8 +2954,8 @@ class Ui_MainWindow(object):
    #          cax=sc.canvas.ax)
         print('canvasdupa')
         self.sc.canvas.draw()
-        self.frame_2.DrawChildren
-        
+        #self.frame_2.DrawChildren
+        self.sc.update()
             
     def click_analiza(self):
         print('click_analiza - zadzialal')
