@@ -45,7 +45,7 @@ def f(x):
 
 
 def nelder_mead(f, x_start, max_iter=0,
-                step=0.1, no_improve_thr=epsilon,
+                step=1, no_improve_thr=epsilon,
                 no_improv_break=10, 
                 alpha=1., gamma=2., rho=-0.5, sigma=0.5):
 
@@ -220,22 +220,27 @@ def start_eval(temp_str):
     #start = start_rand(arguments)
 
     #algorytm(f_str,start) #wywolanie czesci z algorytmem - podanie stringa funkcji i argumentow startowych
-def give_simplex(step,vert):
+def give_simplex(step):
     itr = 0
     itr2 = 0
     global simplexes
     points = []
     point = []
-    
-    while itr <= 2:#length(pa3.simplexes):
-        print('point is:','x',simplexes[step+itr][0][0],'y',simplexes[step+itr][0][1],'z',simplexes[step+itr][1])
-        point.append(simplexes[(step*3)+itr][0][0])
-        point.append(simplexes[(step*3)+itr][0][1])
-        point.append(simplexes[(step*3)+itr][1])
-        points.append(point)
+    points.clear()
+    while itr <= 2: #length(pa3.simplexes):
+        point.clear()
+
+        point.append(simplexes[step][itr][0][0])
+        point.append(simplexes[step][itr][0][1])
+        point.append(simplexes[step][itr][1])
+        print('point is:','x',point[0],'y',point[1])
+
+        #point.append(simplexes[step][2][1])
+        #point.append(simplexes[step+itr][1])
+        points.append(point.copy())
+        print('POINTS ARE:',points)
         itr = itr + 1
-    #print('pointsy',points)
-    return points[vert]
+    return points
 
 def give_simplex_point(step):
     itr = 0

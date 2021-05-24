@@ -2919,12 +2919,13 @@ class Ui_MainWindow(object):
         self.Konsola.append('Najlepsza wartość:')
         self.Konsola.append(str(pa3.give_bestpoint(self.ScrollKrok.value())))
         self.Konsola.append('Wierzchołki simpleksu:')
+        points = pa3.give_simplex(self.ScrollKrok.value())
         self.Konsola.append('Wierzchołek 1:')
-       # self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),0)))
+        self.Konsola.append(str([points[0][0],points[0][1],points[0][2]]))
         self.Konsola.append('Wierzchołek 2:')
-        #self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),1)))
+        self.Konsola.append(str([points[1][0],points[1][1],points[1][2]]))
         self.Konsola.append('Wierzchołek 3:')
-        #self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),2)))
+        self.Konsola.append(str([points[2][0],points[2][1],points[2][2]]))
 
 
     def scroll_zmien_max(self):
@@ -2959,8 +2960,8 @@ class Ui_MainWindow(object):
         X, Y = np.meshgrid(x1, y1)
         Z = f(X, Y)
         points = pa3.give_simplex_point(self.ScrollKrok.value())
-        arrPunktowX = [points[0][0], points[1][0],points[2][0]]
-        arrPunktowY = [points[0][1], points[1][1],points[2][1]]#[pa3.give_simplex_point(self.ScrollKrok.value(),1)[1], pa3.give_simplex_point(self.ScrollKrok.value(),1)[1],pa3.give_simplex_point(self.ScrollKrok.value(),2)[1]]
+        arrPunktowX = [points[0][0], points[1][0],points[2][0],points[0][0]]
+        arrPunktowY = [points[0][1], points[1][1],points[2][1],points[0][1]]#[pa3.give_simplex_point(self.ScrollKrok.value(),1)[1], pa3.give_simplex_point(self.ScrollKrok.value(),1)[1],pa3.give_simplex_point(self.ScrollKrok.value(),2)[1]]
         
         x = arrPunktowX
         y = arrPunktowY
