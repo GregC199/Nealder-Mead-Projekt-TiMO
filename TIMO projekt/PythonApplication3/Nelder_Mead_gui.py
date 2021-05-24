@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 # Ensure using PyQt5 backend
 matplotlib.use('QT5Agg')
 
-f_str='x**2+y*x+0.5*y**2-x-y'
+f_str=''
 
 def f(x1, x2):
     return eval(f_str)
@@ -56,6 +56,7 @@ class MplWidget(QtWidgets.QWidget):
 class Ui_MainWindow(object):
     L = 0
     layout = QtWidgets.QGridLayout()
+    wykres_init = 0
     
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -2868,7 +2869,10 @@ class Ui_MainWindow(object):
         self.ButtonKrokOptimum.clicked.connect(self.pokaz_optimum)##########
         self.ButtonWyrysuj.clicked.connect(self.wyrysuj_warstwice)##########
         self.txtIloscKrokow.textChanged.connect(self.scroll_zmien_max)
-        self.txtL.textChanged.connect(self.L_change)
+        self.ButtonEdytujEpsL.clicked.connect(self.L_change)
+        self.ButtonWyrysuj.setEnabled(0)
+        self.ScrollKrok.setEnabled(0)
+        self.txtKrok.setEnabled(0)
         #self.txtKrok.textChanged.connect(self.scroll_zmien_wart)
         '''
         Coś się psuło
@@ -2876,8 +2880,26 @@ class Ui_MainWindow(object):
         self.ScrollKrok.valueChanged.connect(self.tekst_krok_wart)
         
     def L_change(self):
-        self.L = int(self.txtL.text())
-        print('zmieniam L ')
+        str_tmp = str(self.txtL.text())
+        #print('str_tmp:',str_tmp)
+        if str_tmp != '':
+            #print('str!= !')
+            if str_tmp[0] != '-':
+                #print('!=-')
+                if str_tmp.isnumeric() == True:
+                    #print('isnum')
+                    if int(str_tmp) > 0:
+                        #print('zapis')
+                        self.L = int(str_tmp)
+            else:
+                msgerr = QtWidgets.QMessageBox()
+                msgerr.setIcon(QtWidgets.QMessageBox.Critical)
+                msgerr.setText("Wartość L nie może być ujemna")
+                msgerr.setWindowTitle("Błąd wprowadzenia wartości L!")
+                msgerr.exec_()
+        else:
+            self.L = 0
+        print('zmieniam L na', self.L)
 
     def pokaz_krok(self):
         self.txtIloscKrokow.clear()
@@ -2906,11 +2928,13 @@ class Ui_MainWindow(object):
 
 
     def scroll_zmien_max(self):
-        if self.txtIloscKrokow.text() != '':
-            if np.isnan(int(self.txtIloscKrokow.text())) == 0:
-                if int(self.txtIloscKrokow.text()) > 0:
-                    self.ScrollKrok.setMaximum(int(self.txtIloscKrokow.text()))
-        
+        str_tmp = self.txtIloscKrokow.text()
+        if str_tmp != '':
+            if str_tmp.isnumeric() == True:
+                if int(str_tmp) > 0:
+                    self.ScrollKrok.setEnabled(1)
+                    self.ScrollKrok.setMaximum(int(str_tmp))
+                    self.txtKrok.setEnabled(1)
     def tekst_krok_wart(self):
         self.txtKrok.setText(str(self.ScrollKrok.value()))
             
@@ -2918,13 +2942,15 @@ class Ui_MainWindow(object):
         a = 1
         
     def wyrysuj_warstwice(self):
-        self.sc = MplWidget(self.frame_2)
-        self.sc.canvas.ax.cla()
+        if self.wykres_init == 0:
+            self.sc = MplWidget(self.frame_2)
+            self.layout.addWidget(self.sc)
+            self.frame_2.setLayout(self.layout)
+        else:
+            self.sc.canvas.ax.cla()
         
         
-        self.layout = QtWidgets.QGridLayout()
-        self.layout.addWidget(self.sc)
-        self.frame_2.setLayout(self.layout)
+
         
         x=range(0, 10)
         y=range(0, 20)
@@ -2953,14 +2979,12 @@ class Ui_MainWindow(object):
 
   #     sc.canvas.fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap),
    #          cax=sc.canvas.ax)
-<<<<<<< HEAD
-        self.sc.canvas.draw_idle()
+        if self.wykres_init == 0:
+            self.sc.canvas.draw()
+            self.wykres_init = 1
+        else:
+            self.sc.canvas.draw_idle()
         #self.sc.update()
-=======
-        print('canvasdupa')
-        self.sc.canvas.draw()
-        self.frame_2.DrawChildren
->>>>>>> branch 'master' of https://github.com/GregC199/Nealder-Mead-Projekt-TiMO
         
             
     def click_analiza(self):
