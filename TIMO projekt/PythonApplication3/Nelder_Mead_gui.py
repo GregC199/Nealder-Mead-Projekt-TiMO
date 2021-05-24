@@ -2902,8 +2902,8 @@ class Ui_MainWindow(object):
         print('zmieniam L na', self.L)
 
     def pokaz_krok(self):
-        self.txtIloscKrokow.clear()
-        self.txtIloscKrokow.insert("100")
+        #self.txtIloscKrokow.clear()
+        #self.txtIloscKrokow.insert("100")
         tmp_max = float(self.txtIloscKrokow.text())
         tmp_krok = float(self.txtKrok.text())
         
@@ -2916,15 +2916,15 @@ class Ui_MainWindow(object):
         self.Konsola.clear()
         self.Konsola.append('Centroid:')
         self.Konsola.append(str(pa3.give_centroid(self.ScrollKrok.value())))
-        self.Konsola.append('Najlepszy punkt:')
+        self.Konsola.append('Najlepsza wartość:')
         self.Konsola.append(str(pa3.give_bestpoint(self.ScrollKrok.value())))
         self.Konsola.append('Wierzchołki simpleksu:')
         self.Konsola.append('Wierzchołek 1:')
-        self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),0)))
+       # self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),0)))
         self.Konsola.append('Wierzchołek 2:')
-        self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),1)))
+        #self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),1)))
         self.Konsola.append('Wierzchołek 3:')
-        self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),2)))
+        #self.Konsola.append(str(pa3.give_simplex(self.ScrollKrok.value(),2)))
 
 
     def scroll_zmien_max(self):
@@ -2950,23 +2950,22 @@ class Ui_MainWindow(object):
             self.sc.canvas.ax.cla()
         
         
-
-        
         x=range(0, 10)
         y=range(0, 20)
-
         
-        x1 = np.linspace(-8, 8, 50)
-        y1 = np.linspace(-8, 8, 40)
+        x1 = np.linspace(-5, 5, 50)
+        y1 = np.linspace(-5, 5, 40)
         
         X, Y = np.meshgrid(x1, y1)
         Z = f(X, Y)
-        
-        arrPunktowX = [1, 3]
-        arrPunktowY = [1, 3]
+        points = pa3.give_simplex_point(self.ScrollKrok.value())
+        arrPunktowX = [points[0][0], points[1][0],points[2][0]]
+        arrPunktowY = [points[0][1], points[1][1],points[2][1]]#[pa3.give_simplex_point(self.ScrollKrok.value(),1)[1], pa3.give_simplex_point(self.ScrollKrok.value(),1)[1],pa3.give_simplex_point(self.ScrollKrok.value(),2)[1]]
         
         x = arrPunktowX
         y = arrPunktowY
+        print('taki jest zestaw x',x)
+        print('taki jest zestaw y',y)
         
         
         self.sc.canvas.ax.plot(x, y)
@@ -3046,6 +3045,8 @@ class Ui_MainWindow(object):
         if pa3.argm >= 5:
             start[4] = pa3.random.uniform(int(self.txtAX5.text()),int(self.txtBX5.text()))
         pa3.algorytm(start,self.L)
+        self.txtIloscKrokow.setText(str(pa3.g_iters-1))
+        print(len(pa3.centroids))
 
   
         #pa3.nelder_mead(self.txtFunkcja.text(), pa3.f, start)

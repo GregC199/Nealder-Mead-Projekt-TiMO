@@ -17,6 +17,7 @@ best_points = []
 centroids = []
 epsilon = 1e-3
 L = 0
+g_iters = 0
 
 def f(x):
     x1,x2,x3,x4,x5 = sympy.symbols('x1 x2 x3 x4 x5')
@@ -53,6 +54,11 @@ def nelder_mead(f, x_start, max_iter=0,
     global simplexes
     global L
     global centroids
+    global g_iters
+    centroids.clear()
+    simplexes.clear()
+    best_points.clear()
+    best_points.clear()
     max_iter = L
     dim = len(x_start)
     prev_best = f(x_start)
@@ -72,14 +78,15 @@ def nelder_mead(f, x_start, max_iter=0,
         print('L iteracje: ',L)
         print('max_iter iteracje: ',max_iter)
         print(iters)
+        g_iters = iters
         # order
         res.sort(key=lambda x: x[1])
         best = res[0][1]
         bestlist.append(res[0][1]) 
 
-        simplexes.append(res[0])
-        simplexes.append(res[1])
-        simplexes.append(res[2])
+        simplexes.append([res[0],res[1],res[2]])
+        #simplexes.append(res[1])
+        #simplexes.append(res[2])
 
         #print('test')
         #print(res[0][0][0],res[0][0][1],res[0][1])
@@ -115,6 +122,8 @@ def nelder_mead(f, x_start, max_iter=0,
         for tup in res[:-1]:
             for i, c in enumerate(tup[0]):
                 x0[i] += c / (len(res)-1)
+        cent_score = f(x0)
+        centroids.append([x0,cent_score])
 
         # reflection
         xr = x0 + alpha*(x0 - res[-1][0])
@@ -143,7 +152,6 @@ def nelder_mead(f, x_start, max_iter=0,
         if cscore < res[-1][1]:
             del res[-1]
             res.append([xc, cscore])
-            centroids.append([xc,cscore])
             continue
 
 
@@ -165,7 +173,7 @@ def algorytm(start,iter):
     result = nelder_mead(f, start)
     #print(result)
     print(*result, sep='\n')
-    print('dupa')
+    print('Simplexes:')
     print(*simplexes,sep='\n')
 
 def start_rand(arguments): #przyjmuje ilosc argumentów i tworzy wektor startowy
@@ -220,14 +228,35 @@ def give_simplex(step,vert):
     point = []
     
     while itr <= 2:#length(pa3.simplexes):
-        point.append(simplexes[step+itr][0][0])
-        point.append(simplexes[step+itr][0][1])
-        point.append(simplexes[step+itr][1])
+        print('point is:','x',simplexes[step+itr][0][0],'y',simplexes[step+itr][0][1],'z',simplexes[step+itr][1])
+        point.append(simplexes[(step*3)+itr][0][0])
+        point.append(simplexes[(step*3)+itr][0][1])
+        point.append(simplexes[(step*3)+itr][1])
         points.append(point)
-        print('testchuj')
-        print(points)
         itr = itr + 1
+    #print('pointsy',points)
     return points[vert]
+
+def give_simplex_point(step):
+    itr = 0
+    itr2 = 0
+    global simplexes
+    points = []
+    point = []
+    points.clear()
+    while itr <= 2: #length(pa3.simplexes):
+        point.clear()
+
+        point.append(simplexes[step][itr][0][0])
+        point.append(simplexes[step][itr][0][1])
+        print('point is:','x',point[0],'y',point[1])
+
+        #point.append(simplexes[step][2][1])
+        #point.append(simplexes[step+itr][1])
+        points.append(point.copy())
+        print('POINTS ARE:',points)
+        itr = itr + 1
+    return points
 
 def give_centroid(step):
     global centroids
