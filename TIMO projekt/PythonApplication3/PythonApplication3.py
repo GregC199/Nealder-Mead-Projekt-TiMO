@@ -59,6 +59,7 @@ def nelder_mead(f, x_start, max_iter=0,
     simplexes.clear()
     best_points.clear()
     best_points.clear()
+
     max_iter = L
     dim = len(x_start)
     prev_best = f(x_start)
@@ -75,8 +76,8 @@ def nelder_mead(f, x_start, max_iter=0,
     # simplex iter
     iters = 0
     while 1:
-        print('L iteracje: ',L)
-        print('max_iter iteracje: ',max_iter)
+       # print('L iteracje: ',L)
+       # print('max_iter iteracje: ',max_iter)
         print(iters)
         g_iters = iters
         # order
@@ -92,6 +93,9 @@ def nelder_mead(f, x_start, max_iter=0,
         #print(res[0][0][0],res[0][0][1],res[0][1])
         #print(*simplexes,sep='\n')
         # break after max_iter
+
+        
+
         if max_iter and iters >= max_iter:
             print('best val',res[0])
             best_points = bestlist
@@ -105,8 +109,17 @@ def nelder_mead(f, x_start, max_iter=0,
 
         # break after no_improv_break iterations with no improvement
         #print '...best so far:', best
+        if dim == 2:
+            dist = max_vert_dist_n2(res)
+        if dim == 3:
+            dist = max_vert_dist_n3(res)
+        if dim == 4:
+            dist = max_vert_dist_n4(res)
+        if dim == 5: 
+            dist = max_vert_dist_n5(res)
 
-        if best < prev_best - no_improve_thr:
+        
+        if  dist > no_improve_thr:#best < prev_best - no_improve_thr:
             no_improv = 0
             prev_best = best
         else:
@@ -154,7 +167,6 @@ def nelder_mead(f, x_start, max_iter=0,
             res.append([xc, cscore])
             continue
 
-
         # reduction
         x1 = res[0][0]
         nres = []
@@ -172,9 +184,9 @@ def algorytm(start,iter):
     print('L iteracje: ',L)
     result = nelder_mead(f, start)
     #print(result)
-    print(*result, sep='\n')
-    print('Simplexes:')
-    print(*simplexes,sep='\n')
+    #print(*result, sep='\n')
+    #print('Simplexes:')
+    #print(*simplexes,sep='\n')
 
 def start_rand(arguments): #przyjmuje ilosc argumentów i tworzy wektor startowy
     while itr < arguments:
@@ -274,4 +286,89 @@ def give_centroid(step):
 
 def give_bestpoint(step):
     return best_points[step]
+
+def max_vert_dist_n2(vertices):
+    dist = []
+                         #            (x1-x2)^2                                  (y1-y2)^2               +              (z1-z2)^2
+    dist.append(math.sqrt((vertices[0][0][0]-vertices[1][0][0])**2+(vertices[0][0][1]-vertices[1][0][1])**2))#+(vertices[0][1]-vertices[1][1])**2))
+                        #             (x2-x3)^2                                  (y2-y3)^2               +              (z2-z3)^2
+    dist.append(math.sqrt((vertices[1][0][0]-vertices[2][0][0])**2+(vertices[1][0][1]-vertices[2][0][1])**2))#+(vertices[1][1]-vertices[2][1])**2))
+                        #             (x3-x1)^2                                  (y3-y1)^2               +              (z3-z1)^2
+    dist.append(math.sqrt((vertices[2][0][0]-vertices[0][0][0])**2+(vertices[2][0][1]-vertices[0][0][1])**2))#+(vertices[2][1]-vertices[0][1])**2))
+    print('Policzone odleglosci','\n',dist,'\n')
+    dist.sort()
+    return dist[0]
+
+def max_vert_dist_n3(vertices):
+    dist = []
+                         #            (x1-x2)^2                                  (y1-y2)^2               +              (z1-z2)^2
+    dist.append(math.sqrt((vertices[0][0][0]-vertices[1][0][0])**2+(vertices[0][0][1]-vertices[1][0][1])**2+(vertices[0][0][2]-vertices[1][0][2])**2))#+(vertices[0][1]-vertices[1][1])**2))
+                        #             (x2-x3)^2                                  (y2-y3)^2               +              (z2-z3)^2
+    dist.append(math.sqrt((vertices[1][0][0]-vertices[2][0][0])**2+(vertices[1][0][1]-vertices[2][0][1])**2+(vertices[1][0][2]-vertices[2][0][2])**2))#+(vertices[1][1]-vertices[2][1])**2))
+                        #             (x3-x1)^2                                  (y3-y1)^2               +              (z3-z1)^2
+    dist.append(math.sqrt((vertices[2][0][0]-vertices[3][0][0])**2+(vertices[2][0][1]-vertices[3][0][1])**2+(vertices[2][0][2]-vertices[3][0][2])**2))#+(vertices[2][1]-vertices[0][1])**2))
+
+    dist.append(math.sqrt((vertices[3][0][0]-vertices[0][0][0])**2+(vertices[3][0][1]-vertices[0][0][1])**2+(vertices[3][0][2]-vertices[0][0][2])**2))
+    print('Policzone odleglosci','\n',dist,'\n')
+    dist.sort()
+    return dist[0]
+    
+
+def max_vert_dist_n4(vertices):
+    dist = []
+                         #            (x1-x2)^2                                  (y1-y2)^2               +              (z1-z2)^2
+    dist.append(math.sqrt((vertices[0][0][0]-vertices[1][0][0])**2+(vertices[0][0][1]-vertices[1][0][1])**2+(vertices[0][0][2]-vertices[1][0][2])**2 + (vertices[0][0][3]-vertices[1][0][3])**2))#+(vertices[0][1]-vertices[1][1])**2))
+                        #             (x2-x3)^2                                  (y2-y3)^2               +              (z2-z3)^2
+    dist.append(math.sqrt((vertices[1][0][0]-vertices[2][0][0])**2+(vertices[1][0][1]-vertices[2][0][1])**2+(vertices[1][0][2]-vertices[2][0][2])**2+ (vertices[1][0][3]-vertices[2][0][3])**2))#+(vertices[1][1]-vertices[2][1])**2))
+                        #             (x3-x1)^2                                  (y3-y1)^2               +              (z3-z1)^2
+    dist.append(math.sqrt((vertices[2][0][0]-vertices[3][0][0])**2+(vertices[2][0][1]-vertices[3][0][1])**2+(vertices[2][0][2]-vertices[3][0][2])**2+ (vertices[2][0][3]-vertices[3][0][3])**2))#+(vertices[2][1]-vertices[0][1])**2))
+
+    dist.append(math.sqrt((vertices[3][0][0]-vertices[4][0][0])**2+(vertices[3][0][1]-vertices[4][0][1])**2+(vertices[3][0][2]-vertices[4][0][2])**2+ (vertices[3][0][3]-vertices[4][0][3])**2))
+
+    dist.append(math.sqrt((vertices[4][0][0]-vertices[0][0][0])**2+(vertices[4][0][1]-vertices[0][0][1])**2+(vertices[4][0][2]-vertices[0][0][2])**2+ (vertices[4][0][3]-vertices[0][0][3])**2))
+
+    print('Policzone odleglosci','\n',dist,'\n')
+    dist.sort()
+    return dist[0]
+
+def max_vert_dist_n5(vertices):
+    dist = []
+                         #            (x1-x2)^2                                  (y1-y2)^2               +              (z1-z2)^2
+    dist.append(math.sqrt((vertices[0][0][0]-vertices[1][0][0])**2+(vertices[0][0][1]-vertices[1][0][1])**2+(vertices[0][0][2]-vertices[1][0][2])**2 + (vertices[0][0][3]-vertices[1][0][3])**2 + (vertices[0][0][4]-vertices[1][0][4])**2))#+(vertices[0][1]-vertices[1][1])**2))
+                        #             (x2-x3)^2                                  (y2-y3)^2               +              (z2-z3)^2
+    dist.append(math.sqrt((vertices[1][0][0]-vertices[2][0][0])**2+(vertices[1][0][1]-vertices[2][0][1])**2+(vertices[1][0][2]-vertices[2][0][2])**2 + (vertices[1][0][3]-vertices[2][0][3])**2 + (vertices[1][0][4]-vertices[2][0][4])**2))#+(vertices[1][1]-vertices[2][1])**2))
+                        #             (x3-x1)^2                                  (y3-y1)^2               +              (z3-z1)^2
+    dist.append(math.sqrt((vertices[2][0][0]-vertices[3][0][0])**2+(vertices[2][0][1]-vertices[3][0][1])**2+(vertices[2][0][2]-vertices[3][0][2])**2 + (vertices[2][0][3]-vertices[3][0][3])**2 + (vertices[2][0][4]-vertices[3][0][4])**2))#+(vertices[2][1]-vertices[0][1])**2))
+
+    dist.append(math.sqrt((vertices[3][0][0]-vertices[4][0][0])**2+(vertices[3][0][1]-vertices[4][0][1])**2+(vertices[3][0][2]-vertices[4][0][2])**2 + (vertices[3][0][3]-vertices[4][0][3])**2 + (vertices[3][0][4]-vertices[4][0][4])**2))
+
+    dist.append(math.sqrt((vertices[4][0][0]-vertices[5][0][0])**2+(vertices[4][0][1]-vertices[5][0][1])**2+(vertices[4][0][2]-vertices[5][0][2])**2 + (vertices[4][0][3]-vertices[5][0][3])**2 + (vertices[4][0][4]-vertices[5][0][4])**2))
+
+    dist.append(math.sqrt((vertices[5][0][0]-vertices[0][0][0])**2+(vertices[5][0][1]-vertices[0][0][1])**2+(vertices[5][0][2]-vertices[0][0][2])**2 + (vertices[5][0][3]-vertices[0][0][3])**2 + (vertices[5][0][4]-vertices[0][0][4])**2))
+    print('Policzone odleglosci','\n',dist,'\n')
+    dist.sort()
+    return dist[0]
+    
+def max_vert_dist_n6(vertices):
+    dist = []
+                         #            (x1-x2)^2                                  (y1-y2)^2               +              (z1-z2)^2
+    dist.append(math.sqrt((vertices[0][0][0]-vertices[1][0][0])**2+(vertices[0][0][1]-vertices[1][0][1])**2+(vertices[0][0][2]-vertices[1][0][2])**2 + (vertices[0][0][3]-vertices[1][0][3])**2 + (vertices[0][0][4]-vertices[1][0][4])**2+ (vertices[0][0][5]-vertices[1][0][5])**2))#+(vertices[0][1]-vertices[1][1])**2))
+                        #             (x2-x3)^2                                  (y2-y3)^2               +              (z2-z3)^2
+    dist.append(math.sqrt((vertices[1][0][0]-vertices[2][0][0])**2+(vertices[1][0][1]-vertices[2][0][1])**2+(vertices[1][0][2]-vertices[2][0][2])**2 + (vertices[1][0][3]-vertices[2][0][3])**2 + (vertices[1][0][4]-vertices[2][0][4])**2+ (vertices[1][0][5]-vertices[2][0][5])**2))#+(vertices[1][1]-vertices[2][1])**2))
+                        #             (x3-x1)^2                                  (y3-y1)^2               +              (z3-z1)^2
+    dist.append(math.sqrt((vertices[2][0][0]-vertices[3][0][0])**2+(vertices[2][0][1]-vertices[3][0][1])**2+(vertices[2][0][2]-vertices[3][0][2])**2 + (vertices[2][0][3]-vertices[3][0][3])**2 + (vertices[2][0][4]-vertices[3][0][4])**2+ (vertices[2][0][5]-vertices[3][0][5])**2))#+(vertices[2][1]-vertices[0][1])**2))
+
+    dist.append(math.sqrt((vertices[3][0][0]-vertices[4][0][0])**2+(vertices[3][0][1]-vertices[4][0][1])**2+(vertices[3][0][2]-vertices[4][0][2])**2 + (vertices[3][0][3]-vertices[4][0][3])**2 + (vertices[3][0][4]-vertices[4][0][4])**2+ (vertices[3][0][5]-vertices[4][0][5])**2))
+
+    dist.append(math.sqrt((vertices[4][0][0]-vertices[5][0][0])**2+(vertices[4][0][1]-vertices[5][0][1])**2+(vertices[4][0][2]-vertices[5][0][2])**2 + (vertices[4][0][3]-vertices[5][0][3])**2 + (vertices[4][0][4]-vertices[5][0][4])**2+ (vertices[4][0][5]-vertices[5][0][5])**2))
+
+    dist.append(math.sqrt((vertices[5][0][0]-vertices[6][0][0])**2+(vertices[5][0][1]-vertices[6][0][1])**2+(vertices[5][0][2]-vertices[6][0][2])**2 + (vertices[5][0][3]-vertices[6][0][3])**2 + (vertices[5][0][4]-vertices[6][0][4])**2+ (vertices[5][0][5]-vertices[6][0][5])**2))
+
+    dist.append(math.sqrt((vertices[6][0][0]-vertices[0][0][0])**2+(vertices[6][0][1]-vertices[0][0][1])**2+(vertices[6][0][2]-vertices[0][0][2])**2 + (vertices[6][0][3]-vertices[0][0][3])**2 + (vertices[6][0][4]-vertices[0][0][4])**2+ (vertices[6][0][5]-vertices[0][0][5])**2))
+
+    print('Policzone odleglosci','\n',dist,'\n')
+    dist.sort()
+    return dist[0]
+
+
              
