@@ -58,6 +58,18 @@ class Ui_MainWindow(object):
     layout = QtWidgets.QGridLayout()
     wykres_init = 0
     
+    AX1 = -1
+    AX2 = -1
+    AX3 = -1
+    AX4 = -1
+    AX5 = -1
+    
+    BX1 = 1
+    BX2 = 1
+    BX3 = 1
+    BX4 = 1
+    BX5 = 1
+    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1049, 814)
@@ -2652,7 +2664,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.txtIloscKrokow.sizePolicy().hasHeightForWidth())
         self.txtIloscKrokow.setSizePolicy(sizePolicy)
-        self.txtIloscKrokow.setMinimumSize(QtCore.QSize(133, 30))
+        self.txtIloscKrokow.setMinimumSize(QtCore.QSize(128, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -2823,6 +2835,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         
         self.txtIloscKrokow.setReadOnly(1)
+        self.txtKrok.setReadOnly(1)
         
         self.CustomFunctions()
 
@@ -2853,12 +2866,22 @@ class Ui_MainWindow(object):
         self.LBox.setTitle(_translate("MainWindow", "L - max. ilość iter."))
         self.ButtonEdytujEpsL.setText(_translate("MainWindow", "Edytuj L"))
         self.BoxKroki.setTitle(_translate("MainWindow", "Podgląd kolejnych kroków"))
-        self.label_5.setText(_translate("MainWindow", "Ilość kroków:"))
+        self.label_5.setText(_translate("MainWindow", "Il. kroków - 1:"))
         self.label_6.setText(_translate("MainWindow", "Krok:"))
         self.ButtonKrokOptimum.setText(_translate("MainWindow", "Pokaż optimum"))
         self.ButtonDanyKrok.setText(_translate("MainWindow", "Pokaż dany krok"))
         self.ButtonWyrysuj.setText(_translate("MainWindow", "Wyrysuj warstwicę"))
         self.txtL.setPlaceholderText(_translate("MainWindow", "Domyślnie ∞"))
+        self.txtAX1.setPlaceholderText(_translate("MainWindow", "-1"))
+        self.txtAX2.setPlaceholderText(_translate("MainWindow", "-1"))
+        self.txtAX3.setPlaceholderText(_translate("MainWindow", "-1"))
+        self.txtAX4.setPlaceholderText(_translate("MainWindow", "-1"))
+        self.txtAX5.setPlaceholderText(_translate("MainWindow", "-1"))
+        self.txtBX1.setPlaceholderText(_translate("MainWindow", "1"))
+        self.txtBX2.setPlaceholderText(_translate("MainWindow", "1"))
+        self.txtBX3.setPlaceholderText(_translate("MainWindow", "1"))
+        self.txtBX4.setPlaceholderText(_translate("MainWindow", "1"))
+        self.txtBX5.setPlaceholderText(_translate("MainWindow", "1"))
         
         
     def CustomFunctions(self):
@@ -2873,12 +2896,152 @@ class Ui_MainWindow(object):
         self.ButtonWyrysuj.setEnabled(0)
         self.ScrollKrok.setEnabled(0)
         self.txtKrok.setEnabled(0)
+        self.ButtonObliczOptimum.setEnabled(0)
+        self.ButtonKrokOptimum.clicked.connect(self.pokaz_optimum)
         #self.txtKrok.textChanged.connect(self.scroll_zmien_wart)
         '''
         Coś się psuło
         '''
         self.ScrollKrok.valueChanged.connect(self.tekst_krok_wart)
         
+        self.txtAX1.textChanged.connect(self.Kostka_change)
+        self.txtAX2.textChanged.connect(self.Kostka_change)
+        self.txtAX3.textChanged.connect(self.Kostka_change)
+        self.txtAX4.textChanged.connect(self.Kostka_change)
+        self.txtAX5.textChanged.connect(self.Kostka_change)
+        
+        self.txtBX1.textChanged.connect(self.Kostka_change)
+        self.txtBX2.textChanged.connect(self.Kostka_change)
+        self.txtBX3.textChanged.connect(self.Kostka_change)
+        self.txtBX4.textChanged.connect(self.Kostka_change)
+        self.txtBX5.textChanged.connect(self.Kostka_change)
+        
+        
+    def Kostka_change(self):
+        str_tmp = ''
+        if pa3.argm >= 2:
+            str_tmp = str(self.txtAX1.text())
+            if str_tmp != '':
+                if str_tmp[0] == '-':
+                    str_tmp = str_tmp.lstrip("-")
+                    if str_tmp.isnumeric() == True:
+                        self.AX1 = int(self.txtAX1.text())
+                else:
+                    if str_tmp.isnumeric() == True:
+                        self.AX1 = int(self.txtAX1.text())
+            else:
+                self.AX1 = -1
+            
+            str_tmp = str(self.txtBX1.text())
+            if str_tmp != '':
+                if str_tmp[0] == '-':
+                    str_tmp = str_tmp.lstrip("-")
+                    if str_tmp.isnumeric() == True:
+                        self.BX1 = int(self.txtBX1.text())
+                else:
+                    if str_tmp.isnumeric() == True:
+                        self.BX1 = int(self.txtBX1.text())
+            else:
+                self.BX1 = 1
+            
+            str_tmp = str(self.txtAX2.text())
+            if str_tmp != '':
+                if str_tmp[0] == '-':
+                    str_tmp = str_tmp.lstrip("-")
+                    if str_tmp.isnumeric() == True:
+                        self.AX2 = int(self.txtAX2.text())
+                else:
+                    if str_tmp.isnumeric() == True:
+                        self.AX2 = int(self.txtAX2.text())
+            else:
+                self.AX2 = -1
+            
+            str_tmp = str(self.txtBX2.text())
+            if str_tmp != '':
+                if str_tmp[0] == '-':
+                    str_tmp = str_tmp.lstrip("-")
+                    if str_tmp.isnumeric() == True:
+                        self.BX2 = int(self.txtBX2.text())
+                else:
+                    if str_tmp.isnumeric() == True:
+                        self.BX2 = int(self.txtBX2.text())
+            else:
+                self.BX2 = 1
+                
+        if pa3.argm >= 3:
+            str_tmp = str(self.txtAX3.text())
+            if str_tmp != '':
+                if str_tmp[0] == '-':
+                    str_tmp = str_tmp.lstrip("-")
+                    if str_tmp.isnumeric() == True:
+                        self.AX3 = int(self.txtAX3.text())
+                else:
+                    if str_tmp.isnumeric() == True:
+                        self.AX3 = int(self.txtAX3.text())
+            else:
+                self.AX3 = -1
+            
+            str_tmp = str(self.txtBX3.text())
+            if str_tmp != '':
+                if str_tmp[0] == '-':
+                    str_tmp = str_tmp.lstrip("-")
+                    if str_tmp.isnumeric() == True:
+                        self.BX3 = int(self.txtBX3.text())
+                else:
+                    if str_tmp.isnumeric() == True:
+                        self.BX3 = int(self.txtBX3.text())
+            else:
+                self.BX3 = 1
+        if pa3.argm >= 4:
+            str_tmp = str(self.txtAX4.text())
+            if str_tmp != '':
+                if str_tmp[0] == '-':
+                    str_tmp = str_tmp.lstrip("-")
+                    if str_tmp.isnumeric() == True:
+                        self.AX4 = int(self.txtAX4.text())
+                else:
+                    if str_tmp.isnumeric() == True:
+                        self.AX4 = int(self.txtAX4.text())
+            else:
+                self.AX4 = -1
+            
+            str_tmp = str(self.txtBX4.text())
+            if str_tmp != '':
+                if str_tmp[0] == '-':
+                    str_tmp = str_tmp.lstrip("-")
+                    if str_tmp.isnumeric() == True:
+                        self.BX4 = int(self.txtBX4.text())
+                else:
+                    if str_tmp.isnumeric() == True:
+                        self.BX4 = int(self.txtBX4.text())
+            else:
+                self.BX4 = 1
+        if pa3.argm >= 5:
+            str_tmp = str(self.txtAX5.text())
+            if str_tmp != '':
+                if str_tmp[0] == '-':
+                    str_tmp = str_tmp.lstrip("-")
+                    if str_tmp.isnumeric() == True:
+                        self.AX5 = int(self.txtAX5.text())
+                else:
+                    if str_tmp.isnumeric() == True:
+                        self.AX5 = int(self.txtAX5.text())
+            else:
+                self.AX5 = -1
+            
+            str_tmp = str(self.txtBX5.text())
+            if str_tmp != '':
+                if str_tmp[0] == '-':
+                    str_tmp = str_tmp.lstrip("-")
+                    if str_tmp.isnumeric() == True:
+                        self.BX5 = int(self.txtBX5.text())
+                else:
+                    if str_tmp.isnumeric() == True:
+                        self.BX5 = int(self.txtBX5.text())
+            else:
+                self.BX5 = 1
+
+             
     def L_change(self):
         str_tmp = str(self.txtL.text())
         #print('str_tmp:',str_tmp)
@@ -2940,7 +3103,8 @@ class Ui_MainWindow(object):
         self.txtKrok.setText(str(self.ScrollKrok.value()))
             
     def pokaz_optimum(self):
-        a = 1
+        self.ScrollKrok.setValue(int(self.txtIloscKrokow.text()))
+        self.pokaz_krok()
         
     def wyrysuj_warstwice(self):
         if self.wykres_init == 0:
@@ -2996,23 +3160,21 @@ class Ui_MainWindow(object):
         f_str = f_str.replace('pi','math.pi')
         f_str = f_str.replace('sin','math.sin')
         print('Funkcja: ', f_str)
+        self.ButtonWyrysuj.setEnabled(0)
         if pa3.argm >= 2:
             self.txtAX1.setEnabled(1)
             self.txtBX1.setEnabled(1)
             self.txtAX2.setEnabled(1)
             self.txtBX2.setEnabled(1)
-            self.ButtonWyrysuj.setEnabled(1)
         else:
             self.txtAX1.setEnabled(0)
             self.txtBX1.setEnabled(0)
             self.txtAX2.setEnabled(0)
             self.txtBX2.setEnabled(0)
-            self.ButtonWyrysuj.setEnabled(0)
 
         if pa3.argm >= 3:
             self.txtAX3.setEnabled(1)
             self.txtBX3.setEnabled(1)
-            self.ButtonWyrysuj.setEnabled(0)
         else:
             self.txtAX3.setEnabled(0)
             self.txtBX3.setEnabled(0)
@@ -3020,7 +3182,6 @@ class Ui_MainWindow(object):
         if pa3.argm >= 4:
             self.txtAX4.setEnabled(1)
             self.txtBX4.setEnabled(1)
-            self.ButtonWyrysuj.setEnabled(0)
         else:
             self.txtAX4.setEnabled(0)
             self.txtBX4.setEnabled(0)
@@ -3028,27 +3189,28 @@ class Ui_MainWindow(object):
         if pa3.argm >= 5:
             self.txtAX5.setEnabled(1)
             self.txtBX5.setEnabled(1)
-            self.ButtonWyrysuj.setEnabled(0)
         else:
             self.txtAX5.setEnabled(0)
             self.txtBX5.setEnabled(0)
-
+        self.ButtonObliczOptimum.setEnabled(1)
+    
     def click_znajdz(self):
         
         start = pa3.np.empty(pa3.argm)
         if pa3.argm >= 2:
-            start[0] = pa3.random.uniform(int(self.txtAX1.text()),int(self.txtBX1.text()))
-            start[1] = pa3.random.uniform(int(self.txtAX2.text()),int(self.txtBX2.text()))
+            start[0] = pa3.random.uniform(self.AX1,self.BX1)
+            start[1] = pa3.random.uniform(self.AX2,self.BX2)
         if pa3.argm >= 3:
-            start[2] = pa3.random.uniform(int(self.txtAX3.text()),int(self.txtBX3.text()))
+            start[2] = pa3.random.uniform(self.AX3,self.BX3)
         if pa3.argm >= 4:
-            start[3] = pa3.random.uniform(int(self.txtAX4.text()),int(self.txtBX4.text()))
+            start[3] = pa3.random.uniform(self.AX4,self.BX4)
         if pa3.argm >= 5:
-            start[4] = pa3.random.uniform(int(self.txtAX5.text()),int(self.txtBX5.text()))
+            start[4] = pa3.random.uniform(self.AX5,self.BX5)
         pa3.algorytm(start,self.L)
         self.txtIloscKrokow.setText(str(pa3.g_iters-1))
         print(len(pa3.centroids))
-
+        self.ButtonObliczOptimum.setEnabled(0)
+        self.ButtonWyrysuj.setEnabled(1)
   
         #pa3.nelder_mead(self.txtFunkcja.text(), pa3.f, start)
 
