@@ -13,7 +13,7 @@ import PythonApplication3 as pa3
 import numpy as np
 from pip._vendor.html5lib.treebuilders.etree_lxml import tostring
 import matplotlib 
-from PyQt5.Qt import QVBoxLayout
+from PyQt5.Qt import QVBoxLayout, QWidget
 matplotlib.use('Qt5Agg')
 
 from matplotlib.figure import Figure
@@ -29,7 +29,7 @@ f_str='x**2+y*x+0.5*y**2-x-y'
 def f(x1, x2):
     return eval(f_str)
 
-class MplCanvas(Canvas):
+class MplCanvas(Canvas):   
     def __init__(self):
         self.fig = Figure()
         self.ax = self.fig.add_subplot(111)
@@ -39,6 +39,12 @@ class MplCanvas(Canvas):
         
 # Matplotlib widget
 class MplWidget(QtWidgets.QWidget):
+    def reinit(self, parent=None):
+        QtWidgets.QWidget.__init__(self, parent)   # Inherit from QWidget
+        self.canvas = MplCanvas()                  # Create canvas object
+        self.vbl = QtWidgets.QVBoxLayout()         # Set box for plotting
+        self.vbl.addWidget(self.canvas)
+        self.setLayout(self.vbl)
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)   # Inherit from QWidget
         self.canvas = MplCanvas()                  # Create canvas object
@@ -2910,14 +2916,17 @@ class Ui_MainWindow(object):
         a = 1
         
     def wyrysuj_warstwice(self):
-        sc = MplWidget(self.frame_2)
+        self.sc = MplWidget(self.frame_2)
+        self.sc.canvas.fig.clf()
+        self.sc.canvas.ax.cla()
+        self.sc.reinit(self.frame_2)
         
         layout = QtWidgets.QGridLayout()
-        layout.addWidget(sc)
+        layout.addWidget(self.sc)
         self.frame_2.setLayout(layout)
         
         x=range(0, 10)
-        y=range(0, 20, 2)
+        y=range(0, 20)
 
         
         x1 = np.linspace(-8, 8, 50)
@@ -2933,9 +2942,9 @@ class Ui_MainWindow(object):
         y = arrPunktowY
         
         
-        sc.canvas.ax.plot(x, y)
-        sc.canvas.ax.plot(x, y,'o')
-        sc.canvas.ax.contourf(X, Y, Z, 20, cmap='jet')
+        self.sc.canvas.ax.plot(x, y)
+        self.sc.canvas.ax.plot(x, y,'o')
+        self.sc.canvas.ax.contourf(X, Y, Z, 20, cmap='jet')
         #sc.canvas.fig.colorbar()
 
         #cmap = matplotlib.cm.cool
@@ -2944,8 +2953,8 @@ class Ui_MainWindow(object):
   #     sc.canvas.fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap),
    #          cax=sc.canvas.ax)
         
-        sc.canvas.draw()
-        
+        self.sc.canvas.draw()
+        self.frame_2.DrawChildren
         
             
     def click_analiza(self):
@@ -2962,15 +2971,18 @@ class Ui_MainWindow(object):
             self.txtBX1.setEnabled(1)
             self.txtAX2.setEnabled(1)
             self.txtBX2.setEnabled(1)
+            self.ButtonWyrysuj.setEnabled(1)
         else:
             self.txtAX1.setEnabled(0)
             self.txtBX1.setEnabled(0)
             self.txtAX2.setEnabled(0)
             self.txtBX2.setEnabled(0)
+            self.ButtonWyrysuj.setEnabled(0)
 
         if pa3.argm >= 3:
             self.txtAX3.setEnabled(1)
             self.txtBX3.setEnabled(1)
+            self.ButtonWyrysuj.setEnabled(0)
         else:
             self.txtAX3.setEnabled(0)
             self.txtBX3.setEnabled(0)
@@ -2978,6 +2990,7 @@ class Ui_MainWindow(object):
         if pa3.argm >= 4:
             self.txtAX4.setEnabled(1)
             self.txtBX4.setEnabled(1)
+            self.ButtonWyrysuj.setEnabled(0)
         else:
             self.txtAX4.setEnabled(0)
             self.txtBX4.setEnabled(0)
@@ -2985,6 +2998,7 @@ class Ui_MainWindow(object):
         if pa3.argm >= 5:
             self.txtAX5.setEnabled(1)
             self.txtBX5.setEnabled(1)
+            self.ButtonWyrysuj.setEnabled(0)
         else:
             self.txtAX5.setEnabled(0)
             self.txtBX5.setEnabled(0)
