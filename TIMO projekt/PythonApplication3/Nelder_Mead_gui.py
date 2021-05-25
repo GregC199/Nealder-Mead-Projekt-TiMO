@@ -3119,8 +3119,8 @@ class Ui_MainWindow(object):
         x=range(0, 10)
         y=range(0, 20)
         
-        x1 = np.linspace(-5, 5, 100)
-        y1 = np.linspace(-5, 5, 100)
+        x1 = np.linspace(-5, 5, 200)
+        y1 = np.linspace(-5, 5, 200)
         
         X, Y = np.meshgrid(x1, y1)
         Z = f(X, Y)
@@ -3140,8 +3140,10 @@ class Ui_MainWindow(object):
         
         #self.sc.canvas.ax.contourf(X, Y, Z, 150, cmap='jet')
         #self.sc.canvas.ax.contour(X, Y, Z, 150, color='black')
-        CS = self.sc.canvas.ax.contourf(X, Y, Z, 150, cmap='jet')
+        CS = self.sc.canvas.ax.contourf(X, Y, Z, 200, cmap='jet')
         self.sc.canvas.ax.contour(CS, levels=CS.levels[::1], colors='black',linewidths=(0.2,))
+        self.sc.canvas.ax.xaxis.grid(True, linewidth=0.3, linestyle='--', color='black')
+        self.sc.canvas.ax.yaxis.grid(True, linewidth=0.3, linestyle='--', color='black')
         #sc.canvas.fig.colorbar()
 
         #cmap = matplotlib.cm.cool
