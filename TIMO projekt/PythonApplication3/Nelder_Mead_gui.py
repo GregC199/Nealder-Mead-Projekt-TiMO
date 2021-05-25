@@ -2926,10 +2926,10 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.AX1 = int(self.txtAX1.text())
+                        self.AX1 = float(self.txtAX1.text())
                 else:
                     if str_tmp.isnumeric() == True:
-                        self.AX1 = int(self.txtAX1.text())
+                        self.AX1 = float(self.txtAX1.text())
             else:
                 self.AX1 = -1
             
@@ -2938,10 +2938,10 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.BX1 = int(self.txtBX1.text())
+                        self.BX1 = float(self.txtBX1.text())
                 else:
                     if str_tmp.isnumeric() == True:
-                        self.BX1 = int(self.txtBX1.text())
+                        self.BX1 = float(self.txtBX1.text())
             else:
                 self.BX1 = 1
             
@@ -2950,10 +2950,10 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.AX2 = int(self.txtAX2.text())
+                        self.AX2 = float(self.txtAX2.text())
                 else:
                     if str_tmp.isnumeric() == True:
-                        self.AX2 = int(self.txtAX2.text())
+                        self.AX2 = float(self.txtAX2.text())
             else:
                 self.AX2 = -1
             
@@ -2962,10 +2962,10 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.BX2 = int(self.txtBX2.text())
+                        self.BX2 = float(self.txtBX2.text())
                 else:
                     if str_tmp.isnumeric() == True:
-                        self.BX2 = int(self.txtBX2.text())
+                        self.BX2 = float(self.txtBX2.text())
             else:
                 self.BX2 = 1
                 
@@ -2975,10 +2975,10 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.AX3 = int(self.txtAX3.text())
+                        self.AX3 = float(self.txtAX3.text())
                 else:
                     if str_tmp.isnumeric() == True:
-                        self.AX3 = int(self.txtAX3.text())
+                        self.AX3 = float(self.txtAX3.text())
             else:
                 self.AX3 = -1
             
@@ -2987,10 +2987,10 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.BX3 = int(self.txtBX3.text())
+                        self.BX3 = float(self.txtBX3.text())
                 else:
                     if str_tmp.isnumeric() == True:
-                        self.BX3 = int(self.txtBX3.text())
+                        self.BX3 = float(self.txtBX3.text())
             else:
                 self.BX3 = 1
         if pa3.argm >= 4:
@@ -2999,10 +2999,10 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.AX4 = int(self.txtAX4.text())
+                        self.AX4 = float(self.txtAX4.text())
                 else:
                     if str_tmp.isnumeric() == True:
-                        self.AX4 = int(self.txtAX4.text())
+                        self.AX4 = float(self.txtAX4.text())
             else:
                 self.AX4 = -1
             
@@ -3011,10 +3011,10 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.BX4 = int(self.txtBX4.text())
+                        self.BX4 = float(self.txtBX4.text())
                 else:
                     if str_tmp.isnumeric() == True:
-                        self.BX4 = int(self.txtBX4.text())
+                        self.BX4 = float(self.txtBX4.text())
             else:
                 self.BX4 = 1
         if pa3.argm >= 5:
@@ -3023,10 +3023,10 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.AX5 = int(self.txtAX5.text())
+                        self.AX5 = float(self.txtAX5.text())
                 else:
                     if str_tmp.isnumeric() == True:
-                        self.AX5 = int(self.txtAX5.text())
+                        self.AX5 = float(self.txtAX5.text())
             else:
                 self.AX5 = -1
             
@@ -3035,10 +3035,10 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.BX5 = int(self.txtBX5.text())
+                        self.BX5 = float(self.txtBX5.text())
                 else:
                     if str_tmp.isnumeric() == True:
-                        self.BX5 = int(self.txtBX5.text())
+                        self.BX5 = float(self.txtBX5.text())
             else:
                 self.BX5 = 1
 
@@ -3119,8 +3119,8 @@ class Ui_MainWindow(object):
         x=range(0, 10)
         y=range(0, 20)
         
-        x1 = np.linspace(-1.5, 4, 50)
-        y1 = np.linspace(-3, 4, 40)
+        x1 = np.linspace(-5, 5, 50)
+        y1 = np.linspace(-5, 5, 50)
         
         X, Y = np.meshgrid(x1, y1)
         Z = f(X, Y)
