@@ -3209,10 +3209,10 @@ class Ui_MainWindow(object):
         #######################
             #Walidatory
         self.txtDpi.setValidator(QtGui.QIntValidator(0, 1000))
-        self.txtXZakresDo.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
-        self.txtXZakresOd.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
-        self.txtYZakresDo.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
-        self.txtYZakresOd.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
+        self.txtXZakresDo.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtXZakresOd.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtYZakresDo.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtYZakresOd.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
         self.txtL.setValidator(QtGui.QIntValidator(0, 999999999))
         self.txtAX1.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
         self.txtAX2.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
