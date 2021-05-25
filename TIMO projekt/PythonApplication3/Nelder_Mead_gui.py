@@ -59,6 +59,8 @@ class Ui_MainWindow(object):
     layout = QtWidgets.QGridLayout()
     wykres_init = 0
     
+    aktywacja_warstwica = 0
+    
     AX1 = -1
     AX2 = -1
     AX3 = -1
@@ -71,6 +73,13 @@ class Ui_MainWindow(object):
     BX4 = 1
     BX5 = 1
     
+    DPI = 200
+    
+    YOd = -5.00
+    YDo = 5.00
+    XOd = -5.00
+    XDo = 5.00
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1049, 814)
@@ -2646,6 +2655,8 @@ class Ui_MainWindow(object):
         self.ilosckrok_2.setMaximumSize(QtCore.QSize(16777215, 41))
         self.ilosckrok_2.setObjectName("ilosckrok_2")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.ilosckrok_2)
+        self.horizontalLayout.setContentsMargins(0, 10, 0, 0)
+        self.horizontalLayout.setSpacing(5)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label_5 = QtWidgets.QLabel(self.ilosckrok_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -2665,7 +2676,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.txtIloscKrokow.sizePolicy().hasHeightForWidth())
         self.txtIloscKrokow.setSizePolicy(sizePolicy)
-        self.txtIloscKrokow.setMinimumSize(QtCore.QSize(128, 30))
+        self.txtIloscKrokow.setMinimumSize(QtCore.QSize(133, 30))
+        #self.txtIloscKrokow.setMaximumSize(QtCore.QSize(143, 41))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -2686,6 +2698,8 @@ class Ui_MainWindow(object):
         self.krok_2.setMaximumSize(QtCore.QSize(16777215, 41))
         self.krok_2.setObjectName("krok_2")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.krok_2)
+        self.horizontalLayout_2.setContentsMargins(0, 10, 0, 0)
+        self.horizontalLayout_2.setSpacing(5)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label_6 = QtWidgets.QLabel(self.krok_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -2705,7 +2719,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.txtKrok.sizePolicy().hasHeightForWidth())
         self.txtKrok.setSizePolicy(sizePolicy)
-        self.txtKrok.setMinimumSize(QtCore.QSize(200, 30))
+        self.txtKrok.setMinimumSize(QtCore.QSize(211, 30))
         self.txtKrok.setMaximumSize(QtCore.QSize(256, 41))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
@@ -2799,7 +2813,7 @@ class Ui_MainWindow(object):
         self.widget_7.setObjectName("widget_7")
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.widget_7)
         self.horizontalLayout_10.setContentsMargins(1, 1, 1, 1)
-        self.horizontalLayout_10.setSpacing(1)
+        self.horizontalLayout_10.setSpacing(7)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         spacerItem13 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_10.addItem(spacerItem13)
@@ -2816,14 +2830,263 @@ class Ui_MainWindow(object):
         spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_10.addItem(spacerItem14)
         self.verticalLayout_6.addWidget(self.widget_7)
-        spacerItem15 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
-        self.verticalLayout_6.addItem(spacerItem15)
+        self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_17.setSpacing(4)
+        self.horizontalLayout_17.setObjectName("horizontalLayout_17")
+        spacerItem15 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_17.addItem(spacerItem15)
+        self.ilosckrok_3 = QtWidgets.QWidget(self.BoxPrawy)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ilosckrok_3.sizePolicy().hasHeightForWidth())
+        self.ilosckrok_3.setSizePolicy(sizePolicy)
+        self.ilosckrok_3.setMinimumSize(QtCore.QSize(0, 41))
+        self.ilosckrok_3.setMaximumSize(QtCore.QSize(16777215, 41))
+        self.ilosckrok_3.setObjectName("ilosckrok_3")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.ilosckrok_3)
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_4.setSpacing(5)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.label_7 = QtWidgets.QLabel(self.ilosckrok_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_7.sizePolicy().hasHeightForWidth())
+        self.label_7.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
+        self.horizontalLayout_4.addWidget(self.label_7)
+        self.txtDpi = QtWidgets.QLineEdit(self.ilosckrok_3)
+        self.txtDpi.setEnabled(False)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txtDpi.sizePolicy().hasHeightForWidth())
+        self.txtDpi.setSizePolicy(sizePolicy)
+        self.txtDpi.setMinimumSize(QtCore.QSize(50, 30))
+        self.txtDpi.setMaximumSize(QtCore.QSize(50, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.txtDpi.setFont(font)
+        self.txtDpi.setAlignment(QtCore.Qt.AlignCenter)
+        self.txtDpi.setObjectName("txtDpi")
+        self.horizontalLayout_4.addWidget(self.txtDpi)
+        self.horizontalLayout_17.addWidget(self.ilosckrok_3)
+        self.label_30 = QtWidgets.QLabel(self.BoxPrawy)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_30.sizePolicy().hasHeightForWidth())
+        self.label_30.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.label_30.setFont(font)
+        self.label_30.setObjectName("label_30")
+        self.horizontalLayout_17.addWidget(self.label_30)
+        self.ilosckrok_6 = QtWidgets.QWidget(self.BoxPrawy)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ilosckrok_6.sizePolicy().hasHeightForWidth())
+        self.ilosckrok_6.setSizePolicy(sizePolicy)
+        self.ilosckrok_6.setMinimumSize(QtCore.QSize(0, 41))
+        self.ilosckrok_6.setMaximumSize(QtCore.QSize(16777215, 41))
+        self.ilosckrok_6.setObjectName("ilosckrok_6")
+        self.horizontalLayout_15 = QtWidgets.QHBoxLayout(self.ilosckrok_6)
+        self.horizontalLayout_15.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_15.setSpacing(5)
+        self.horizontalLayout_15.setObjectName("horizontalLayout_15")
+        self.label_12 = QtWidgets.QLabel(self.ilosckrok_6)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_12.sizePolicy().hasHeightForWidth())
+        self.label_12.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.label_12.setFont(font)
+        self.label_12.setObjectName("label_12")
+        self.horizontalLayout_15.addWidget(self.label_12)
+        self.txtYZakresOd = QtWidgets.QLineEdit(self.ilosckrok_6)
+        self.txtYZakresOd.setEnabled(False)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txtYZakresOd.sizePolicy().hasHeightForWidth())
+        self.txtYZakresOd.setSizePolicy(sizePolicy)
+        self.txtYZakresOd.setMinimumSize(QtCore.QSize(50, 30))
+        self.txtYZakresOd.setMaximumSize(QtCore.QSize(50, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.txtYZakresOd.setFont(font)
+        self.txtYZakresOd.setAlignment(QtCore.Qt.AlignCenter)
+        self.txtYZakresOd.setObjectName("txtYZakresOd")
+        self.horizontalLayout_15.addWidget(self.txtYZakresOd)
+        self.horizontalLayout_17.addWidget(self.ilosckrok_6)
+        self.ilosckrok_7 = QtWidgets.QWidget(self.BoxPrawy)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ilosckrok_7.sizePolicy().hasHeightForWidth())
+        self.ilosckrok_7.setSizePolicy(sizePolicy)
+        self.ilosckrok_7.setMinimumSize(QtCore.QSize(0, 41))
+        self.ilosckrok_7.setMaximumSize(QtCore.QSize(16777215, 41))
+        self.ilosckrok_7.setObjectName("ilosckrok_7")
+        self.horizontalLayout_16 = QtWidgets.QHBoxLayout(self.ilosckrok_7)
+        self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_16.setSpacing(5)
+        self.horizontalLayout_16.setObjectName("horizontalLayout_16")
+        self.label_13 = QtWidgets.QLabel(self.ilosckrok_7)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_13.sizePolicy().hasHeightForWidth())
+        self.label_13.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.label_13.setFont(font)
+        self.label_13.setObjectName("label_13")
+        self.horizontalLayout_16.addWidget(self.label_13)
+        self.txtYZakresDo = QtWidgets.QLineEdit(self.ilosckrok_7)
+        self.txtYZakresDo.setEnabled(False)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txtYZakresDo.sizePolicy().hasHeightForWidth())
+        self.txtYZakresDo.setSizePolicy(sizePolicy)
+        self.txtYZakresDo.setMinimumSize(QtCore.QSize(50, 30))
+        self.txtYZakresDo.setMaximumSize(QtCore.QSize(50, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.txtYZakresDo.setFont(font)
+        self.txtYZakresDo.setAlignment(QtCore.Qt.AlignCenter)
+        self.txtYZakresDo.setObjectName("txtYZakresDo")
+        self.horizontalLayout_16.addWidget(self.txtYZakresDo)
+        self.horizontalLayout_17.addWidget(self.ilosckrok_7)
+        self.label_29 = QtWidgets.QLabel(self.BoxPrawy)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_29.sizePolicy().hasHeightForWidth())
+        self.label_29.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.label_29.setFont(font)
+        self.label_29.setObjectName("label_29")
+        self.horizontalLayout_17.addWidget(self.label_29)
+        self.ilosckrok_4 = QtWidgets.QWidget(self.BoxPrawy)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ilosckrok_4.sizePolicy().hasHeightForWidth())
+        self.ilosckrok_4.setSizePolicy(sizePolicy)
+        self.ilosckrok_4.setMinimumSize(QtCore.QSize(0, 41))
+        self.ilosckrok_4.setMaximumSize(QtCore.QSize(16777215, 41))
+        self.ilosckrok_4.setObjectName("ilosckrok_4")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.ilosckrok_4)
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_6.setSpacing(5)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.label_8 = QtWidgets.QLabel(self.ilosckrok_4)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_8.sizePolicy().hasHeightForWidth())
+        self.label_8.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.label_8.setFont(font)
+        self.label_8.setObjectName("label_8")
+        self.horizontalLayout_6.addWidget(self.label_8)
+        self.txtXZakresOd = QtWidgets.QLineEdit(self.ilosckrok_4)
+        self.txtXZakresOd.setEnabled(False)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txtXZakresOd.sizePolicy().hasHeightForWidth())
+        self.txtXZakresOd.setSizePolicy(sizePolicy)
+        self.txtXZakresOd.setMinimumSize(QtCore.QSize(50, 30))
+        self.txtXZakresOd.setMaximumSize(QtCore.QSize(50, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.txtXZakresOd.setFont(font)
+        self.txtXZakresOd.setAlignment(QtCore.Qt.AlignCenter)
+        self.txtXZakresOd.setObjectName("txtXZakresOd")
+        self.horizontalLayout_6.addWidget(self.txtXZakresOd)
+        self.horizontalLayout_17.addWidget(self.ilosckrok_4)
+        self.ilosckrok_5 = QtWidgets.QWidget(self.BoxPrawy)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ilosckrok_5.sizePolicy().hasHeightForWidth())
+        self.ilosckrok_5.setSizePolicy(sizePolicy)
+        self.ilosckrok_5.setMinimumSize(QtCore.QSize(0, 41))
+        self.ilosckrok_5.setMaximumSize(QtCore.QSize(16777215, 41))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.ilosckrok_5.setFont(font)
+        self.ilosckrok_5.setObjectName("ilosckrok_5")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.ilosckrok_5)
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_7.setSpacing(5)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.label_9 = QtWidgets.QLabel(self.ilosckrok_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_9.sizePolicy().hasHeightForWidth())
+        self.label_9.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.label_9.setFont(font)
+        self.label_9.setObjectName("label_9")
+        self.horizontalLayout_7.addWidget(self.label_9)
+        self.txtXZakresDo = QtWidgets.QLineEdit(self.ilosckrok_5)
+        self.txtXZakresDo.setEnabled(False)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txtXZakresDo.sizePolicy().hasHeightForWidth())
+        self.txtXZakresDo.setSizePolicy(sizePolicy)
+        self.txtXZakresDo.setMinimumSize(QtCore.QSize(50, 30))
+        self.txtXZakresDo.setMaximumSize(QtCore.QSize(50, 30))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.txtXZakresDo.setFont(font)
+        self.txtXZakresDo.setAlignment(QtCore.Qt.AlignCenter)
+        self.txtXZakresDo.setObjectName("txtXZakresDo")
+        self.horizontalLayout_7.addWidget(self.txtXZakresDo)
+        self.horizontalLayout_17.addWidget(self.ilosckrok_5)
+        spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_17.addItem(spacerItem16)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_17)
+        spacerItem17 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
+        self.verticalLayout_6.addItem(spacerItem17)
         self.Konsola = QtWidgets.QTextEdit(self.BoxPrawy)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Konsola.sizePolicy().hasHeightForWidth())
         self.Konsola.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.Konsola.setFont(font)
         self.Konsola.setReadOnly(True)
         self.Konsola.setObjectName("Konsola")
         self.verticalLayout_6.addWidget(self.Konsola)
@@ -2835,6 +3098,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         
+        #####
+        #####
         self.txtIloscKrokow.setReadOnly(1)
         self.txtKrok.setReadOnly(1)
         
@@ -2865,13 +3130,24 @@ class Ui_MainWindow(object):
         self.label_16.setText(_translate("MainWindow", "≤"))
         self.Epsilon.setTitle(_translate("MainWindow", "Epsilon"))
         self.LBox.setTitle(_translate("MainWindow", "L - max. ilość iter."))
-        self.ButtonEdytujEpsL.setText(_translate("MainWindow", "Edytuj L"))
+        self.ButtonEdytujEpsL.setText(_translate("MainWindow", "Edytuj"))
         self.BoxKroki.setTitle(_translate("MainWindow", "Podgląd kolejnych kroków"))
-        self.label_5.setText(_translate("MainWindow", "Il. kroków - 1:"))
+        self.label_5.setText(_translate("MainWindow", "Il. kroków-1:"))
         self.label_6.setText(_translate("MainWindow", "Krok:"))
         self.ButtonKrokOptimum.setText(_translate("MainWindow", "Pokaż optimum"))
         self.ButtonDanyKrok.setText(_translate("MainWindow", "Pokaż dany krok"))
         self.ButtonWyrysuj.setText(_translate("MainWindow", "Wyrysuj warstwicę"))
+        self.label_7.setText(_translate("MainWindow", "DPI:"))
+        self.label_30.setText(_translate("MainWindow", "   "))
+        self.label_12.setText(_translate("MainWindow", "Y od"))
+        self.label_13.setText(_translate("MainWindow", "do"))
+        self.label_29.setText(_translate("MainWindow", "    "))
+        self.label_8.setText(_translate("MainWindow", "X od"))
+        self.label_9.setText(_translate("MainWindow", "do"))
+
+
+        ##################
+        ##################
         self.txtL.setPlaceholderText(_translate("MainWindow", "Domyślnie ∞"))
         self.txtAX1.setPlaceholderText(_translate("MainWindow", "-1"))
         self.txtAX2.setPlaceholderText(_translate("MainWindow", "-1"))
@@ -2883,7 +3159,11 @@ class Ui_MainWindow(object):
         self.txtBX3.setPlaceholderText(_translate("MainWindow", "1"))
         self.txtBX4.setPlaceholderText(_translate("MainWindow", "1"))
         self.txtBX5.setPlaceholderText(_translate("MainWindow", "1"))
-        
+        self.txtDpi.setPlaceholderText(_translate("MainWindow", "200"))
+        self.txtXZakresDo.setPlaceholderText(_translate("MainWindow", "5"))
+        self.txtYZakresDo.setPlaceholderText(_translate("MainWindow", "5"))
+        self.txtXZakresOd.setPlaceholderText(_translate("MainWindow", "-5"))
+        self.txtYZakresOd.setPlaceholderText(_translate("MainWindow", "-5"))
         
     def CustomFunctions(self):
         self.txtEpsilon.setText(str(pa3.epsilon))
@@ -2917,6 +3197,67 @@ class Ui_MainWindow(object):
         self.txtBX4.textChanged.connect(self.Kostka_change)
         self.txtBX5.textChanged.connect(self.Kostka_change)
         
+        self.txtDpi.textChanged.connect(self.Warstwica_change)
+        self.txtXZakresDo.textChanged.connect(self.Warstwica_change)
+        self.txtYZakresDo.textChanged.connect(self.Warstwica_change)
+        self.txtXZakresOd.textChanged.connect(self.Warstwica_change)
+        self.txtYZakresOd.textChanged.connect(self.Warstwica_change)
+        
+        #self.ButtonWyrysuj.toggled.connect(self.Aktywuj_Pola_Wartwicy)
+        
+        
+        #######################
+            #Walidatory
+        self.txtDpi.setValidator(QtGui.QIntValidator(0, 1000))
+        self.txtXZakresDo.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
+        self.txtXZakresOd.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
+        self.txtYZakresDo.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
+        self.txtYZakresOd.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
+        self.txtL.setValidator(QtGui.QIntValidator(0, 999999999))
+        self.txtAX1.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtAX2.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtAX3.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtAX4.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtAX5.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        
+        self.txtBX1.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtBX2.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtBX3.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtBX4.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtBX5.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        
+    def Warstwica_change(self):
+        if str(self.txtDpi.text()) != '':
+            self.DPI = int(self.txtDpi.text())
+        else:
+            self.DPI = 200
+              
+        if str(self.txtXZakresDo.text()) != '':
+            self.XDo = float(self.txtXZakresDo.text())
+        else:
+            self.XDo = 5.00
+            
+        if str(self.txtYZakresDo.text()) != '':
+            self.YDo = float(self.txtYZakresDo.text())
+        else:
+            self.YDo = 5.00
+            
+        if str(self.txtXZakresOd.text()) != '':
+            self.XOd = float(self.txtXZakresOd.text())
+        else:
+            self.XOd = -5.00
+            
+        if str(self.txtYZakresOd.text()) != '':
+            self.YOd = float(self.txtYZakresOd.text())
+        else:
+            self.YOd = -5.00
+            
+    def Aktywuj_Pola_Wartwicy(self, tmp):
+        self.txtDpi.setEnabled(tmp)
+        self.txtXZakresDo.setEnabled(tmp)
+        self.txtYZakresDo.setEnabled(tmp)
+        self.txtXZakresOd.setEnabled(tmp)
+        self.txtYZakresOd.setEnabled(tmp)
         
     def Kostka_change(self):
         str_tmp = ''
@@ -3100,8 +3441,11 @@ class Ui_MainWindow(object):
                     self.ScrollKrok.setEnabled(1)
                     self.ScrollKrok.setMaximum(int(str_tmp))
                     self.txtKrok.setEnabled(1)
+                    self.txtKrok.setText('0')
     def tekst_krok_wart(self):
         self.txtKrok.setText(str(self.ScrollKrok.value()))
+        if self.wykres_init == 1:
+            self.wyrysuj_warstwice()
             
     def pokaz_optimum(self):
         self.ScrollKrok.setValue(int(self.txtIloscKrokow.text()))
@@ -3116,20 +3460,17 @@ class Ui_MainWindow(object):
             self.sc.canvas.ax.cla()
         
         
-        x=range(0, 10)
-        y=range(0, 20)
         
-        x1 = np.linspace(-5, 5, 200)
-        y1 = np.linspace(-5, 5, 200)
+        x1 = np.linspace(self.XOd, self.XDo, 150)
+        y1 = np.linspace(self.YOd, self.YDo, 150)
         
         X, Y = np.meshgrid(x1, y1)
         Z = f(X, Y)
         points = pa3.give_simplex_point(self.ScrollKrok.value())
-        arrPunktowX = [points[0][0], points[1][0],points[2][0],points[0][0]]
-        arrPunktowY = [points[0][1], points[1][1],points[2][1],points[0][1]]#[pa3.give_simplex_point(self.ScrollKrok.value(),1)[1], pa3.give_simplex_point(self.ScrollKrok.value(),1)[1],pa3.give_simplex_point(self.ScrollKrok.value(),2)[1]]
+    #[pa3.give_simplex_point(self.ScrollKrok.value(),1)[1], pa3.give_simplex_point(self.ScrollKrok.value(),1)[1],pa3.give_simplex_point(self.ScrollKrok.value(),2)[1]]
         
-        x = arrPunktowX
-        y = arrPunktowY
+        x = [points[0][0], points[1][0],points[2][0],points[0][0]]
+        y = [points[0][1], points[1][1],points[2][1],points[0][1]]
         print('taki jest zestaw x',x)
         print('taki jest zestaw y',y)
         
@@ -3140,7 +3481,7 @@ class Ui_MainWindow(object):
         
         #self.sc.canvas.ax.contourf(X, Y, Z, 150, cmap='jet')
         #self.sc.canvas.ax.contour(X, Y, Z, 150, color='black')
-        CS = self.sc.canvas.ax.contourf(X, Y, Z, 200, cmap='jet')
+        CS = self.sc.canvas.ax.contourf(X, Y, Z, self.DPI, cmap='jet')
         self.sc.canvas.ax.contour(CS, levels=CS.levels[::1], colors='black',linewidths=(0.2,))
         self.sc.canvas.ax.xaxis.grid(True, linewidth=0.3, linestyle='--', color='black')
         self.sc.canvas.ax.yaxis.grid(True, linewidth=0.3, linestyle='--', color='black')
@@ -3151,6 +3492,8 @@ class Ui_MainWindow(object):
 
   #     sc.canvas.fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap),
    #          cax=sc.canvas.ax)
+        if self.aktywacja_warstwica == 0:
+            self.aktywacja_warstwica = 1
         if self.wykres_init == 0:
             self.sc.canvas.draw()
             self.wykres_init = 1
@@ -3170,6 +3513,8 @@ class Ui_MainWindow(object):
         f_str = f_str.replace('cos','np.cos')
         print('Funkcja: ', f_str)
         self.ButtonWyrysuj.setEnabled(0)
+        self.Aktywuj_Pola_Wartwicy(0)
+        self.aktywacja_warstwica = 0
         if pa3.argm >= 2:
             self.txtAX1.setEnabled(1)
             self.txtBX1.setEnabled(1)
@@ -3220,6 +3565,7 @@ class Ui_MainWindow(object):
         print(len(pa3.centroids))
         self.ButtonObliczOptimum.setEnabled(0)
         self.ButtonWyrysuj.setEnabled(1)
+        self.Aktywuj_Pola_Wartwicy(1)
   
         #pa3.nelder_mead(self.txtFunkcja.text(), pa3.f, start)
 
@@ -3231,3 +3577,4 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
