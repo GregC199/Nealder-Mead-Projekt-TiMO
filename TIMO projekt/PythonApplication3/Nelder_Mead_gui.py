@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import PythonApplication3 as pa3
 import numpy as np
+import math
 from pip._vendor.html5lib.treebuilders.etree_lxml import tostring
 import matplotlib 
 from PyQt5.Qt import QVBoxLayout, QWidget
@@ -3076,19 +3077,19 @@ class Ui_MainWindow(object):
             msg.setText("Wartość wybranego kroku przekracza całkowitą ilość kroków.")
             msg.setWindowTitle("Błąd wprowadzenia wartości kroku!")
             msg.exec_()
-        self.Konsola.clear()
-        self.Konsola.append('Centroid:')
-        self.Konsola.append(str(pa3.give_centroid(self.ScrollKrok.value())))
+        self.Konsola.clear()        
         self.Konsola.append('Najlepsza wartość:')
         self.Konsola.append(str(pa3.give_bestpoint(self.ScrollKrok.value())))
+        self.Konsola.append('Centroid:')
+        self.Konsola.append(str(pa3.give_centroid(self.ScrollKrok.value())))
         self.Konsola.append('Wierzchołki simpleksu:')
         points = pa3.give_simplex(self.ScrollKrok.value())
         self.Konsola.append('Wierzchołek 1:')
-        self.Konsola.append(str([points[0][0],points[0][1],points[0][2]]))
+        self.Konsola.append(str([round(points[0][0],5),round(points[0][1],5),round(points[0][2],5)]))
         self.Konsola.append('Wierzchołek 2:')
-        self.Konsola.append(str([points[1][0],points[1][1],points[1][2]]))
+        self.Konsola.append(str([round(points[1][0],5),round(points[1][1],5),round(points[1][2],5)]))
         self.Konsola.append('Wierzchołek 3:')
-        self.Konsola.append(str([points[2][0],points[2][1],points[2][2]]))
+        self.Konsola.append(str([round(points[2][0],5),round(points[2][1],5),round(points[2][2],5)]))
 
 
     def scroll_zmien_max(self):
@@ -3118,8 +3119,8 @@ class Ui_MainWindow(object):
         x=range(0, 10)
         y=range(0, 20)
         
-        x1 = np.linspace(-5, 5, 50)
-        y1 = np.linspace(-5, 5, 40)
+        x1 = np.linspace(-1.5, 4, 50)
+        y1 = np.linspace(-3, 4, 40)
         
         X, Y = np.meshgrid(x1, y1)
         Z = f(X, Y)
@@ -3135,7 +3136,7 @@ class Ui_MainWindow(object):
         
         self.sc.canvas.ax.plot(x, y)
         self.sc.canvas.ax.plot(x, y,'o')
-        self.sc.canvas.ax.contourf(X, Y, Z, 20, cmap='jet')
+        self.sc.canvas.ax.contourf(X, Y, Z, 100, cmap='jet')
         #sc.canvas.fig.colorbar()
 
         #cmap = matplotlib.cm.cool
@@ -3158,7 +3159,8 @@ class Ui_MainWindow(object):
         f_str = self.txtFunkcja.text()
         f_str = f_str.replace('^','**')
         f_str = f_str.replace('pi','math.pi')
-        f_str = f_str.replace('sin','math.sin')
+        f_str = f_str.replace('sin','np.sin')
+        f_str = f_str.replace('cos','np.cos')
         print('Funkcja: ', f_str)
         self.ButtonWyrysuj.setEnabled(0)
         if pa3.argm >= 2:

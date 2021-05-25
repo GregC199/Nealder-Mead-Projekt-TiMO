@@ -45,7 +45,7 @@ def f(x):
 
 
 def nelder_mead(f, x_start, max_iter=0,
-                step=1, no_improve_thr=epsilon,
+                step=0.5, no_improve_thr=epsilon,
                 no_improv_break=10, 
                 alpha=1., gamma=2., rho=-0.5, sigma=0.5):
 
@@ -134,7 +134,7 @@ def nelder_mead(f, x_start, max_iter=0,
         x0 = [0.] * (dim)
         for tup in res[:-1]:
             for i, c in enumerate(tup[0]):
-                x0[i] += c / (len(res)-1)
+                x0[i] += c / (len(res)-1)   #c to [x1,x2] na przyklad 
         cent_score = f(x0)
         centroids.append([x0,cent_score])
 
@@ -167,11 +167,11 @@ def nelder_mead(f, x_start, max_iter=0,
             res.append([xc, cscore])
             continue
 
-        # reduction
+        # shrink
         x1 = res[0][0]
         nres = []
         for tup in res:
-            redx = x1 + sigma*(tup[0] - x1)
+            redx = x1 + sigma*(tup[0] - x1) #x1 pozostaje takie samo bo dodajemy 0 w pierwszej iteracji
             score = f(redx)
             nres.append([redx, score])
         res = nres
@@ -278,9 +278,9 @@ def give_simplex_point(step):
 def give_centroid(step):
     global centroids
     cent = []
-    cent.append(centroids[step][0][0])
-    cent.append(centroids[step][0][1])
-    cent.append(centroids[step][1])
+    cent.append(round(centroids[step][0][0],5))
+    cent.append(round(centroids[step][0][1],5))
+    cent.append(round(centroids[step][1],5))
     print(cent)
     return cent
 
@@ -297,7 +297,7 @@ def max_vert_dist_n2(vertices):
     dist.append(math.sqrt((vertices[2][0][0]-vertices[0][0][0])**2+(vertices[2][0][1]-vertices[0][0][1])**2))#+(vertices[2][1]-vertices[0][1])**2))
     print('Policzone odleglosci','\n',dist,'\n')
     dist.sort()
-    return dist[0]
+    return dist[-1]
 
 def max_vert_dist_n3(vertices):
     dist = []
@@ -311,7 +311,7 @@ def max_vert_dist_n3(vertices):
     dist.append(math.sqrt((vertices[3][0][0]-vertices[0][0][0])**2+(vertices[3][0][1]-vertices[0][0][1])**2+(vertices[3][0][2]-vertices[0][0][2])**2))
     print('Policzone odleglosci','\n',dist,'\n')
     dist.sort()
-    return dist[0]
+    return dist[-1]
     
 
 def max_vert_dist_n4(vertices):
@@ -329,7 +329,7 @@ def max_vert_dist_n4(vertices):
 
     print('Policzone odleglosci','\n',dist,'\n')
     dist.sort()
-    return dist[0]
+    return dist[-1]
 
 def max_vert_dist_n5(vertices):
     dist = []
@@ -347,7 +347,7 @@ def max_vert_dist_n5(vertices):
     dist.append(math.sqrt((vertices[5][0][0]-vertices[0][0][0])**2+(vertices[5][0][1]-vertices[0][0][1])**2+(vertices[5][0][2]-vertices[0][0][2])**2 + (vertices[5][0][3]-vertices[0][0][3])**2 + (vertices[5][0][4]-vertices[0][0][4])**2))
     print('Policzone odleglosci','\n',dist,'\n')
     dist.sort()
-    return dist[0]
+    return dist[-1]
     
 def max_vert_dist_n6(vertices):
     dist = []
@@ -368,7 +368,7 @@ def max_vert_dist_n6(vertices):
 
     print('Policzone odleglosci','\n',dist,'\n')
     dist.sort()
-    return dist[0]
+    return dist[-1]
 
 
              
