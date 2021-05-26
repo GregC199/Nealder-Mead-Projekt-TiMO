@@ -5,10 +5,7 @@ from matplotlib import pyplot
 import sympy as sympy
 import numpy as np
 
-'''
-Pure Python/Numpy implementation of the Nelder-Mead algorithm.
-Reference: https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
-'''
+
 f_str = ''
 l_x = 0
 argm = 0
@@ -107,8 +104,6 @@ def nelder_mead(f, x_start, max_iter=0,
 
         iters += 1
 
-        # break after no_improv_break iterations with no improvement
-        #print '...best so far:', best
         if dim == 2:
             dist = max_vert_dist_n2(res)
         if dim == 3:
@@ -117,8 +112,7 @@ def nelder_mead(f, x_start, max_iter=0,
             dist = max_vert_dist_n4(res)
         if dim == 5: 
             dist = max_vert_dist_n5(res)
-
-        
+                
         if  dist > no_improve_thr:#best < prev_best - no_improve_thr:
             no_improv = 0
             prev_best = best
