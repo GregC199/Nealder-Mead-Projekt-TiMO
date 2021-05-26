@@ -3238,7 +3238,9 @@ class Ui_MainWindow(object):
                 if str_tmp.isnumeric() == True:
                     self.XDo = float(str_tmp2)
                     print('WPISUJE string: ', float(str_tmp2),'test stringa',str_tmp2[len(str_tmp2)-1], 'x: ', self.XDo)
-                    
+                if str_tmp2[len(str_tmp2)-1] != '.':
+                    self.XDo = float(str_tmp2)
+                    print('WPISUJE string: ', float(str_tmp2),'test stringa',str_tmp2[len(str_tmp2)-1], 'x: ', self.XDo)    
             else:
                 if str_tmp2[len(str_tmp2)-1] != '.':
                     self.XDo = float(str_tmp2)
@@ -3256,6 +3258,8 @@ class Ui_MainWindow(object):
                 str_tmp = str_tmp.lstrip("-")
                 if str_tmp.isnumeric() == True:
                     self.YDo = float(str_tmp2)
+                if str_tmp2[-1] != '.':
+                    self.YDo = float(str_tmp2)
             else:
                 if str_tmp2[-1] != '.':
                     self.YDo = float(str_tmp2)
@@ -3271,6 +3275,8 @@ class Ui_MainWindow(object):
                 str_tmp = str_tmp.lstrip("-")
                 if str_tmp.isnumeric() == True:
                     self.XOd = float(str_tmp2)
+                if str_tmp2[-1] != '.':
+                    self.XOd = float(str_tmp2)
             else:
                 if str_tmp2[-1] != '.':
                     self.XOd = float(str_tmp2)
@@ -3284,6 +3290,8 @@ class Ui_MainWindow(object):
             if str_tmp[0] == '-':
                 str_tmp = str_tmp.lstrip("-")
                 if str_tmp.isnumeric() == True:
+                    self.YOd = float(str_tmp2)
+                if str_tmp2[-1] != '.':
                     self.YOd = float(str_tmp2)
             else:
                 if str_tmp2[-1] != '.':
