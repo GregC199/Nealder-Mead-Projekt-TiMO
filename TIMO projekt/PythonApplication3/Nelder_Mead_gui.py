@@ -3236,51 +3236,57 @@ class Ui_MainWindow(object):
         
         str_tmp = str(self.txtXZakresDo.text())
         
-        if str_tmp != '':
-            if str_tmp[0] == '-':
-                str_tmp = str_tmp.lstrip("-")
-                if str_tmp.isnumeric() == True:
-                    self.XDo = float(self.txtXZakresDo.text())
-            else:
-                if str_tmp.isnumeric() == True:
-                    self.XDo = float(self.txtXZakresDo.text())
-        else:
-            self.XDo = 5
-            
-        str_tmp = str(self.txtYZakresDo.text())
-        if str_tmp != '':
-            if str_tmp[0] == '-':
-                str_tmp = str_tmp.lstrip("-")
-                if str_tmp.isnumeric() == True:
-                    self.YDo = float(self.txtYZakresDo.text())
-            else:
-                if str_tmp.isnumeric() == True:
-                    self.YDo = float(self.txtYZakresDo.text())
-        else:
-            self.YDo = 5
-            
-        str_tmp = str(self.txtXZakresOd.text())
+        str_tmp2 = ''
+        str_tmp2 = str(self.txtXZakresDo.text()).replace(',','.')
         
         if str_tmp != '':
             if str_tmp[0] == '-':
                 str_tmp = str_tmp.lstrip("-")
                 if str_tmp.isnumeric() == True:
-                    self.XOd = float(self.txtXZakresOd.text())
+                    self.XDo = float(str_tmp2)
             else:
-                if str_tmp.isnumeric() == True:
-                    self.XOd = float(self.txtXZakresOd.text())
+                if str_tmp != '':
+                    self.XDo = float(str_tmp2)
         else:
-            self.XOd = -5
+            self.XDo = 5
             
-        str_tmp = str(self.txtYZakresOd.text())
+        str_tmp = str(self.txtYZakresDo.text())
+        str_tmp2 = str(self.txYZakresDo.text()).replace(',','.')
         if str_tmp != '':
             if str_tmp[0] == '-':
                 str_tmp = str_tmp.lstrip("-")
                 if str_tmp.isnumeric() == True:
-                    self.YOd = float(self.txtYZakresOd.text())
+                    self.YDo = float(str_tmp2)
             else:
+                if str_tmp != '':
+                    self.YDo = float(str_tmp2)
+        else:
+            self.YDo = 5
+            
+        str_tmp = str(self.txtXZakresOd.text())
+        str_tmp2 = str(self.txXZakresOd.text()).replace(',','.')
+        
+        if str_tmp != '':
+            if str_tmp[0] == '-':
+                str_tmp = str_tmp.lstrip("-")
                 if str_tmp.isnumeric() == True:
-                    self.YOd = float(self.txtYZakresOd.text())
+                    self.XOd = float(str_tmp2)
+            else:
+                if str_tmp != '':
+                    self.XOd = float(str_tmp2)
+        else:
+            self.XOd = -5
+            
+        str_tmp = str(self.txtYZakresOd.text())
+        str_tmp2 = str(self.txYZakresDo.text()).replace(',','.')
+        if str_tmp != '':
+            if str_tmp[0] == '-':
+                str_tmp = str_tmp.lstrip("-")
+                if str_tmp.isnumeric() == True:
+                    self.YOd = float(str_tmp2)
+            else:
+                if str_tmp != '':
+                    self.YOd = float(str_tmp2)
         else:
             self.YOd = -5
             
@@ -3302,7 +3308,7 @@ class Ui_MainWindow(object):
                     if str_tmp.isnumeric() == True:
                         self.AX1 = float(self.txtAX1.text())
                 else:
-                    if str_tmp.isnumeric() == True:
+                    if str_tmp != '':
                         self.AX1 = float(self.txtAX1.text())
             else:
                 self.AX1 = -1
@@ -3314,7 +3320,7 @@ class Ui_MainWindow(object):
                     if str_tmp.isnumeric() == True:
                         self.BX1 = float(self.txtBX1.text())
                 else:
-                    if str_tmp.isnumeric() == True:
+                    if str_tmp != '':
                         self.BX1 = float(self.txtBX1.text())
             else:
                 self.BX1 = 1
@@ -3326,7 +3332,7 @@ class Ui_MainWindow(object):
                     if str_tmp.isnumeric() == True:
                         self.AX2 = float(self.txtAX2.text())
                 else:
-                    if str_tmp.isnumeric() == True:
+                    if str_tmp != '':
                         self.AX2 = float(self.txtAX2.text())
             else:
                 self.AX2 = -1
@@ -3338,7 +3344,7 @@ class Ui_MainWindow(object):
                     if str_tmp.isnumeric() == True:
                         self.BX2 = float(self.txtBX2.text())
                 else:
-                    if str_tmp.isnumeric() == True:
+                    if str_tmp != '':
                         self.BX2 = float(self.txtBX2.text())
             else:
                 self.BX2 = 1
@@ -3351,7 +3357,7 @@ class Ui_MainWindow(object):
                     if str_tmp.isnumeric() == True:
                         self.AX3 = float(self.txtAX3.text())
                 else:
-                    if str_tmp.isnumeric() == True:
+                    if str_tmp != '':
                         self.AX3 = float(self.txtAX3.text())
             else:
                 self.AX3 = -1
@@ -3363,10 +3369,11 @@ class Ui_MainWindow(object):
                     if str_tmp.isnumeric() == True:
                         self.BX3 = float(self.txtBX3.text())
                 else:
-                    if str_tmp.isnumeric() == True:
+                    if str_tmp != '':
                         self.BX3 = float(self.txtBX3.text())
             else:
                 self.BX3 = 1
+                
         if pa3.argm >= 4:
             str_tmp = str(self.txtAX4.text())
             if str_tmp != '':
@@ -3375,7 +3382,7 @@ class Ui_MainWindow(object):
                     if str_tmp.isnumeric() == True:
                         self.AX4 = float(self.txtAX4.text())
                 else:
-                    if str_tmp.isnumeric() == True:
+                    if str_tmp != '':
                         self.AX4 = float(self.txtAX4.text())
             else:
                 self.AX4 = -1
@@ -3387,10 +3394,11 @@ class Ui_MainWindow(object):
                     if str_tmp.isnumeric() == True:
                         self.BX4 = float(self.txtBX4.text())
                 else:
-                    if str_tmp.isnumeric() == True:
+                    if str_tmp != '':
                         self.BX4 = float(self.txtBX4.text())
             else:
                 self.BX4 = 1
+                
         if pa3.argm >= 5:
             str_tmp = str(self.txtAX5.text())
             if str_tmp != '':
@@ -3399,7 +3407,7 @@ class Ui_MainWindow(object):
                     if str_tmp.isnumeric() == True:
                         self.AX5 = float(self.txtAX5.text())
                 else:
-                    if str_tmp.isnumeric() == True:
+                    if str_tmp != '':
                         self.AX5 = float(self.txtAX5.text())
             else:
                 self.AX5 = -1
@@ -3411,7 +3419,7 @@ class Ui_MainWindow(object):
                     if str_tmp.isnumeric() == True:
                         self.BX5 = float(self.txtBX5.text())
                 else:
-                    if str_tmp.isnumeric() == True:
+                    if str_tmp != '':
                         self.BX5 = float(self.txtBX5.text())
             else:
                 self.BX5 = 1
