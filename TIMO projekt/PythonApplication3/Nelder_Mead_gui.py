@@ -3166,6 +3166,12 @@ class Ui_MainWindow(object):
         self.txtYZakresOd.setPlaceholderText(_translate("MainWindow", "-5"))
         
     def CustomFunctions(self):
+
+        # loc = QtCore.QLocale().system()
+        # loc.setNumberOptions(QtCore.QLocale().c().numberOptions())
+        # QtCore.QLocale().setDefault(loc)
+
+
         self.txtEpsilon.setText(str(pa3.epsilon))
         self.ButtonAnaliza.clicked.connect(self.click_analiza)##########
         self.ButtonObliczOptimum.clicked.connect(self.click_znajdz)##########
