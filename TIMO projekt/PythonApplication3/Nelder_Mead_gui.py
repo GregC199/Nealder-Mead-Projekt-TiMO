@@ -2676,8 +2676,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.txtIloscKrokow.sizePolicy().hasHeightForWidth())
         self.txtIloscKrokow.setSizePolicy(sizePolicy)
-        self.txtIloscKrokow.setMinimumSize(QtCore.QSize(133, 30))
-        #self.txtIloscKrokow.setMaximumSize(QtCore.QSize(143, 41))
+        self.txtIloscKrokow.setMinimumSize(QtCore.QSize(131, 30))
+        self.txtIloscKrokow.setMaximumSize(QtCore.QSize(185, 41))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(12)
@@ -3474,7 +3474,6 @@ class Ui_MainWindow(object):
                     self.ScrollKrok.setEnabled(1)
                     self.ScrollKrok.setMaximum(int(str_tmp))
                     self.txtKrok.setEnabled(1)
-                    self.txtKrok.setText('0')
     def tekst_krok_wart(self):
         self.txtKrok.setText(str(self.ScrollKrok.value()))
         if self.wykres_init == 1:
@@ -3584,6 +3583,9 @@ class Ui_MainWindow(object):
     def click_znajdz(self):
         
         start = pa3.np.empty(pa3.argm)
+        if pa3.argm == 2:
+            self.ButtonWyrysuj.setEnabled(1)
+            self.Aktywuj_Pola_Wartwicy(1)
         if pa3.argm >= 2:
             start[0] = pa3.random.uniform(self.AX1,self.BX1)
             start[1] = pa3.random.uniform(self.AX2,self.BX2)
@@ -3597,8 +3599,8 @@ class Ui_MainWindow(object):
         self.txtIloscKrokow.setText(str(pa3.g_iters-1))
         print(len(pa3.centroids))
         self.ButtonObliczOptimum.setEnabled(0)
-        self.ButtonWyrysuj.setEnabled(1)
-        self.Aktywuj_Pola_Wartwicy(1)
+        self.txtKrok.setText('0')
+        self.ScrollKrok.setValue(0)
   
         #pa3.nelder_mead(self.txtFunkcja.text(), pa3.f, start)
 
