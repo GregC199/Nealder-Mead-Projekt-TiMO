@@ -3177,6 +3177,7 @@ class Ui_MainWindow(object):
         self.ButtonObliczOptimum.clicked.connect(self.click_znajdz)##########
         self.ButtonDanyKrok.clicked.connect(self.pokaz_krok)##########
         self.ButtonKrokOptimum.clicked.connect(self.pokaz_optimum)##########
+        self.ButtonWyrysuj.clicked.connect(self.Warstwica_change)
         self.ButtonWyrysuj.clicked.connect(self.wyrysuj_warstwice)##########
         self.txtIloscKrokow.textChanged.connect(self.scroll_zmien_max)
         self.ButtonEdytujEpsL.clicked.connect(self.L_change)
@@ -3192,7 +3193,7 @@ class Ui_MainWindow(object):
         self.ScrollKrok.valueChanged.connect(self.tekst_krok_wart)
         
         
-        self.ButtonWyrysuj.clicked.connect(self.Warstwica_change)
+        
         
         #self.ButtonWyrysuj.toggled.connect(self.Aktywuj_Pola_Wartwicy)
         
