@@ -5,10 +5,6 @@ from matplotlib import pyplot
 import sympy as sympy
 import numpy as np
 
-'''
-Pure Python/Numpy implementation of the Nelder-Mead algorithm.
-Reference: https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
-'''
 f_str = ''
 l_x = 0
 argm = 0
