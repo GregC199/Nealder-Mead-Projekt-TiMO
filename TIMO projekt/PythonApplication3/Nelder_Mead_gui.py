@@ -3238,7 +3238,7 @@ class Ui_MainWindow(object):
         
         str_tmp2 = ''
         str_tmp2 = str(self.txtXZakresDo.text())
-        str_tmp2.replace(',','.')
+        #str_tmp2.replace(',','.')
         
         if str_tmp != '':
             if str_tmp[0] == '-':
@@ -3246,9 +3246,9 @@ class Ui_MainWindow(object):
                 if str_tmp.isnumeric() == True:
                     self.XDo = float(str_tmp2)
             else:
-                if str_tmp2[-1] != '.':
+                if str_tmp2[len(str_tmp2)-1] != '.':
                     self.XDo = float(str_tmp2)
-                    print('string: ', float(str_tmp2), 'x: ', self.XDo)
+                    print('string: ', float(str_tmp2),'dupa',str_tmp2[len(str_tmp2)-1], 'x: ', self.XDo)
         else:
             self.XDo = 5
             
