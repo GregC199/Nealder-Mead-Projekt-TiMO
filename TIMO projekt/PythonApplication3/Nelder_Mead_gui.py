@@ -3237,13 +3237,15 @@ class Ui_MainWindow(object):
                 str_tmp = str_tmp.lstrip("-")
                 if str_tmp.isnumeric() == True:
                     self.XDo = float(str_tmp2)
+                    print('WPISUJE string: ', float(str_tmp2),'test stringa',str_tmp2[len(str_tmp2)-1], 'x: ', self.XDo)
                     
             else:
                 if str_tmp2[len(str_tmp2)-1] != '.':
                     self.XDo = float(str_tmp2)
-                    print('string: ', float(str_tmp2),'test stringa',str_tmp2[len(str_tmp2)-1], 'x: ', self.XDo)
+                    print('WPISUJE string: ', float(str_tmp2),'test stringa',str_tmp2[len(str_tmp2)-1], 'x: ', self.XDo)
         else:
             self.XDo = 5
+            print('string: ', float(str_tmp2),'test stringa',str_tmp2[len(str_tmp2)-1], 'x: ', self.XDo)
             
         str_tmp = str(self.txtYZakresDo.text())
         str_tmp2 = str(self.txtYZakresDo.text())
