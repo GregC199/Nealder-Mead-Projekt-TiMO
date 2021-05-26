@@ -3138,11 +3138,11 @@ class Ui_MainWindow(object):
         self.ButtonDanyKrok.setText(_translate("MainWindow", "Pokaż dany krok"))
         self.ButtonWyrysuj.setText(_translate("MainWindow", "Wyrysuj warstwicę"))
         self.label_7.setText(_translate("MainWindow", "DPI:"))
-        self.label_30.setText(_translate("MainWindow", "   "))
-        self.label_12.setText(_translate("MainWindow", "Y od"))
+        self.label_30.setText(_translate("MainWindow", "  "))
+        self.label_12.setText(_translate("MainWindow", "X1 od"))
         self.label_13.setText(_translate("MainWindow", "do"))
-        self.label_29.setText(_translate("MainWindow", "    "))
-        self.label_8.setText(_translate("MainWindow", "X od"))
+        self.label_29.setText(_translate("MainWindow", "   "))
+        self.label_8.setText(_translate("MainWindow", "X2 od"))
         self.label_9.setText(_translate("MainWindow", "do"))
 
 
