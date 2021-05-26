@@ -5,7 +5,6 @@ from matplotlib import pyplot
 import sympy as sympy
 import numpy as np
 
-
 f_str = ''
 l_x = 0
 argm = 0
