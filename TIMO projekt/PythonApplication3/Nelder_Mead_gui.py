@@ -3246,7 +3246,7 @@ class Ui_MainWindow(object):
                 if str_tmp.isnumeric() == True:
                     self.XDo = float(str_tmp2)
             else:
-                if str_tmp != '':
+                if str_tmp2[-1] != '.':
                     self.XDo = float(str_tmp2)
                     print('string: ', float(str_tmp2), 'x: ', self.XDo)
         else:
@@ -3262,7 +3262,7 @@ class Ui_MainWindow(object):
                 if str_tmp.isnumeric() == True:
                     self.YDo = float(str_tmp2)
             else:
-                if str_tmp != '':
+                if str_tmp2[-1] != '.':
                     self.YDo = float(str_tmp2)
         else:
             self.YDo = 5
@@ -3277,7 +3277,7 @@ class Ui_MainWindow(object):
                 if str_tmp.isnumeric() == True:
                     self.XOd = float(str_tmp2)
             else:
-                if str_tmp != '':
+                if str_tmp2[-1] != '.':
                     self.XOd = float(str_tmp2)
         else:
             self.XOd = -5
@@ -3291,7 +3291,7 @@ class Ui_MainWindow(object):
                 if str_tmp.isnumeric() == True:
                     self.YOd = float(str_tmp2)
             else:
-                if str_tmp != '':
+                if str_tmp2[-1] != '.':
                     self.YOd = float(str_tmp2)
         else:
             self.YOd = -5
