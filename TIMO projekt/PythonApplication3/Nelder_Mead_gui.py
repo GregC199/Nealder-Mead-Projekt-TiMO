@@ -3241,7 +3241,7 @@ class Ui_MainWindow(object):
                     print('WPISUJE string: ', float(str_tmp2),'test stringa',str_tmp2[len(str_tmp2)-1], 'x: ', self.XDo)
         else:
             self.XDo = 5
-           # print('string: ', float(str_tmp2),'test stringa',str_tmp2[len(str_tmp2)-1], 'x: ', self.XDo)
+            #print('string: ', float(str_tmp2),'test stringa',str_tmp2[len(str_tmp2)-1], 'x: ', self.XDo)
             
         str_tmp = str(self.txtYZakresDo.text())
         str_tmp2 = str(self.txtYZakresDo.text())
@@ -3313,6 +3313,8 @@ class Ui_MainWindow(object):
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
                         self.AX1 = float(str_tmp2)
+                    if str_tmp2[-1] != '.':
+                        self.AX1 = float(str_tmp2)
                 else:
                     if str_tmp2[-1] != '.':
                         self.AX1 = float(str_tmp2)
@@ -3326,6 +3328,8 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
+                        self.BX1 = float(str_tmp2)
+                    if str_tmp2[-1] != '.':
                         self.BX1 = float(str_tmp2)
                 else:
                     if str_tmp2[-1] != '.':
@@ -3341,6 +3345,8 @@ class Ui_MainWindow(object):
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
                         self.AX2 = float(str_tmp2)
+                    if str_tmp2[-1] != '.':
+                        self.AX2 = float(str_tmp2)
                 else:
                     if str_tmp2[-1] != '.':
                         self.AX2 = float(str_tmp2)
@@ -3354,6 +3360,8 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
+                        self.BX2 = float(str_tmp2)
+                    if str_tmp2[-1] != '.':
                         self.BX2 = float(str_tmp2)
                 else:
                     if str_tmp2[-1] != '.':
@@ -3370,6 +3378,8 @@ class Ui_MainWindow(object):
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
                         self.AX3 = float(str_tmp2)
+                    if str_tmp2[-1] != '.':
+                        self.AX3 = float(str_tmp2)
                 else:
                     if str_tmp2[-1] != '.':
                         self.AX3 = float(str_tmp2)
@@ -3383,6 +3393,8 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
+                        self.BX3 = float(str_tmp2)
+                    if str_tmp2[-1] != '.':
                         self.BX3 = float(str_tmp2)
                 else:
                     if str_tmp2[-1] != '.':
@@ -3399,6 +3411,8 @@ class Ui_MainWindow(object):
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
                         self.AX4 = float(str_tmp2)
+                    if str_tmp2[-1] != '.':
+                        self.AX4 = float(str_tmp2)
                 else:
                     if str_tmp2[-1] != '.':
                         self.AX4 = float(str_tmp2)
@@ -3412,6 +3426,8 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
+                        self.BX4 = float(str_tmp2)
+                    if str_tmp2[-1] != '.':
                         self.BX4 = float(str_tmp2)
                 else:
                     if str_tmp2[-1] != '.':
@@ -3428,6 +3444,8 @@ class Ui_MainWindow(object):
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
                         self.AX5 = float(str_tmp2)
+                    if str_tmp2[-1] != '.':
+                        self.AX5 = float(str_tmp2)
                 else:
                     if str_tmp2[-1] != '.':
                         self.AX5 = float(str_tmp2)
@@ -3441,6 +3459,8 @@ class Ui_MainWindow(object):
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
+                        self.BX5 = float(str_tmp2)
+                    if str_tmp2[-1] != '.':
                         self.BX5 = float(str_tmp2)
                 else:
                     if str_tmp2[-1] != '.':
