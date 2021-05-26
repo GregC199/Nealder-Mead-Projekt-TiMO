@@ -3251,7 +3251,7 @@ class Ui_MainWindow(object):
             self.XDo = 5
             
         str_tmp = str(self.txtYZakresDo.text())
-        str_tmp2 = str(self.txYZakresDo.text()).replace(',','.')
+        str_tmp2 = str(self.txtYZakresDo.text()).replace(',','.')
         if str_tmp != '':
             if str_tmp[0] == '-':
                 str_tmp = str_tmp.lstrip("-")
@@ -3264,7 +3264,7 @@ class Ui_MainWindow(object):
             self.YDo = 5
             
         str_tmp = str(self.txtXZakresOd.text())
-        str_tmp2 = str(self.txXZakresOd.text()).replace(',','.')
+        str_tmp2 = str(self.txtXZakresOd.text()).replace(',','.')
         
         if str_tmp != '':
             if str_tmp[0] == '-':
@@ -3278,7 +3278,7 @@ class Ui_MainWindow(object):
             self.XOd = -5
             
         str_tmp = str(self.txtYZakresOd.text())
-        str_tmp2 = str(self.txYZakresDo.text()).replace(',','.')
+        str_tmp2 = str(self.txtYZakresOd.text()).replace(',','.')
         if str_tmp != '':
             if str_tmp[0] == '-':
                 str_tmp = str_tmp.lstrip("-")
