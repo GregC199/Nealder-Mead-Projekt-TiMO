@@ -75,10 +75,10 @@ class Ui_MainWindow(object):
     
     DPI = 200
     
-    YOd = -5.00
-    YDo = 5.00
-    XOd = -5.00
-    XDo = 5.00
+    YOd = -5
+    YDo = 5
+    XOd = -5
+    XDo = 5
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -3209,10 +3209,10 @@ class Ui_MainWindow(object):
         #######################
             #Walidatory
         self.txtDpi.setValidator(QtGui.QIntValidator(0, 1000))
-        self.txtXZakresDo.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
-        self.txtXZakresOd.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
-        self.txtYZakresDo.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
-        self.txtYZakresOd.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
+        self.txtXZakresDo.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
+        self.txtXZakresOd.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
+        self.txtYZakresDo.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
+        self.txtYZakresOd.setValidator(QtGui.QDoubleValidator(-999999, 999999, 2))
         self.txtL.setValidator(QtGui.QIntValidator(0, 999999999))
         self.txtAX1.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
         self.txtAX2.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
@@ -3232,25 +3232,58 @@ class Ui_MainWindow(object):
         else:
             self.DPI = 200
               
-        if str(self.txtXZakresDo.text()) != '':
-            self.XDo = float(self.txtXZakresDo.text())
+        str_tmp = ''
+        
+        str_tmp = str(self.txtXDo.text())
+        
+        if str_tmp != '':
+            if str_tmp[0] == '-':
+                str_tmp = str_tmp.lstrip("-")
+                if str_tmp.isnumeric() == True:
+                    self.XDo = float(self.txtXZakresDo.text())
+            else:
+                if str_tmp.isnumeric() == True:
+                    self.XDo = float(self.txtXZakresDo.text())
         else:
-            self.XDo = 5.00
+            self.XDo = 5
             
-        if str(self.txtYZakresDo.text()) != '':
-            self.YDo = float(self.txtYZakresDo.text())
+        str_tmp = str(self.txtYDo.text())
+        if str_tmp != '':
+            if str_tmp[0] == '-':
+                str_tmp = str_tmp.lstrip("-")
+                if str_tmp.isnumeric() == True:
+                    self.YDo = float(self.txtYZakresDo.text())
+            else:
+                if str_tmp.isnumeric() == True:
+                    self.YDo = float(self.txtYZakresDo.text())
         else:
-            self.YDo = 5.00
+            self.YDo = 5
             
-        if str(self.txtXZakresOd.text()) != '':
-            self.XOd = float(self.txtXZakresOd.text())
+        str_tmp = str(self.txtXOd.text())
+        
+        if str_tmp != '':
+            if str_tmp[0] == '-':
+                str_tmp = str_tmp.lstrip("-")
+                if str_tmp.isnumeric() == True:
+                    self.XOd = float(self.txtXZakresOd.text())
+            else:
+                if str_tmp.isnumeric() == True:
+                    self.XOd = float(self.txtXZakresOd.text())
         else:
-            self.XOd = -5.00
+            self.XOd = -5
             
-        if str(self.txtYZakresOd.text()) != '':
-            self.YOd = float(self.txtYZakresOd.text())
+        str_tmp = str(self.txtYOd.text())
+        if str_tmp != '':
+            if str_tmp[0] == '-':
+                str_tmp = str_tmp.lstrip("-")
+                if str_tmp.isnumeric() == True:
+                    self.YOd = float(self.txtYZakresOd.text())
+            else:
+                if str_tmp.isnumeric() == True:
+                    self.YOd = float(self.txtYZakresOd.text())
         else:
-            self.YOd = -5.00
+            self.YOd = -5
+            
             
     def Aktywuj_Pola_Wartwicy(self, tmp):
         self.txtDpi.setEnabled(tmp)
