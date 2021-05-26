@@ -3191,23 +3191,8 @@ class Ui_MainWindow(object):
         '''
         self.ScrollKrok.valueChanged.connect(self.tekst_krok_wart)
         
-        self.txtAX1.textChanged.connect(self.Kostka_change)
-        self.txtAX2.textChanged.connect(self.Kostka_change)
-        self.txtAX3.textChanged.connect(self.Kostka_change)
-        self.txtAX4.textChanged.connect(self.Kostka_change)
-        self.txtAX5.textChanged.connect(self.Kostka_change)
         
-        self.txtBX1.textChanged.connect(self.Kostka_change)
-        self.txtBX2.textChanged.connect(self.Kostka_change)
-        self.txtBX3.textChanged.connect(self.Kostka_change)
-        self.txtBX4.textChanged.connect(self.Kostka_change)
-        self.txtBX5.textChanged.connect(self.Kostka_change)
-        
-        self.txtDpi.textChanged.connect(self.Warstwica_change)
-        self.txtXZakresDo.textChanged.connect(self.Warstwica_change)
-        self.txtYZakresDo.textChanged.connect(self.Warstwica_change)
-        self.txtXZakresOd.textChanged.connect(self.Warstwica_change)
-        self.txtYZakresOd.textChanged.connect(self.Warstwica_change)
+        self.ButtonWyrysuj.clicked.connect(self.Warstwica_change)
         
         #self.ButtonWyrysuj.toggled.connect(self.Aktywuj_Pola_Wartwicy)
         
@@ -3232,7 +3217,7 @@ class Ui_MainWindow(object):
         self.txtBX4.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
         self.txtBX5.setValidator(QtGui.QDoubleValidator(-999999, 999999, 4))
         
-    def Warstwica_change(self):
+    def Warstwica_change(self): 
         if str(self.txtDpi.text()) != '':
             self.DPI = int(self.txtDpi.text())
         else:
@@ -3602,7 +3587,7 @@ class Ui_MainWindow(object):
         self.ButtonObliczOptimum.setEnabled(1)
     
     def click_znajdz(self):
-        
+        self.Kostka_change()
         start = pa3.np.empty(pa3.argm)
         if pa3.argm >= 2:
             start[0] = pa3.random.uniform(self.AX1,self.BX1)
