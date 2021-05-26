@@ -3299,127 +3299,148 @@ class Ui_MainWindow(object):
         
     def Kostka_change(self):
         str_tmp = ''
+        str_tmp2 = ''
         if pa3.argm >= 2:
             str_tmp = str(self.txtAX1.text())
+            str_tmp2 = str(self.txtAX1.text())
+            str_tmp2 = str_tmp2.replace(',','.')
             if str_tmp != '':
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.AX1 = float(self.txtAX1.text())
+                        self.AX1 = float(str_tmp2)
                 else:
-                    if str_tmp != '':
-                        self.AX1 = float(self.txtAX1.text())
+                    if str_tmp2[-1] != '.':
+                        self.AX1 = float(str_tmp2)
             else:
                 self.AX1 = -1
             
             str_tmp = str(self.txtBX1.text())
+            str_tmp2 = str(self.txtBX1.text())
+            str_tmp2 = str_tmp2.replace(',','.')
             if str_tmp != '':
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.BX1 = float(self.txtBX1.text())
+                        self.BX1 = float(str_tmp2)
                 else:
-                    if str_tmp != '':
-                        self.BX1 = float(self.txtBX1.text())
+                    if str_tmp2[-1] != '.':
+                        self.BX1 = float(str_tmp2)
             else:
                 self.BX1 = 1
             
             str_tmp = str(self.txtAX2.text())
+            str_tmp2 = str(self.txtAX2.text())
+            str_tmp2 = str_tmp2.replace(',','.')
             if str_tmp != '':
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.AX2 = float(self.txtAX2.text())
+                        self.AX2 = float(str_tmp2)
                 else:
-                    if str_tmp != '':
-                        self.AX2 = float(self.txtAX2.text())
+                    if str_tmp2[-1] != '.':
+                        self.AX2 = float(str_tmp2)
             else:
                 self.AX2 = -1
             
             str_tmp = str(self.txtBX2.text())
+            str_tmp2 = str(self.txtBX2.text())
+            str_tmp2 = str_tmp2.replace(',','.')
             if str_tmp != '':
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.BX2 = float(self.txtBX2.text())
+                        self.BX2 = float(str_tmp2)
                 else:
-                    if str_tmp != '':
-                        self.BX2 = float(self.txtBX2.text())
+                    if str_tmp2[-1] != '.':
+                        self.BX2 = float(str_tmp2)
             else:
                 self.BX2 = 1
                 
         if pa3.argm >= 3:
             str_tmp = str(self.txtAX3.text())
+            str_tmp2 = str(self.txtAX3.text())
+            str_tmp2 = str_tmp2.replace(',','.')
             if str_tmp != '':
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.AX3 = float(self.txtAX3.text())
+                        self.AX3 = float(str_tmp2)
                 else:
-                    if str_tmp != '':
-                        self.AX3 = float(self.txtAX3.text())
+                    if str_tmp2[-1] != '.':
+                        self.AX3 = float(str_tmp2)
             else:
                 self.AX3 = -1
             
             str_tmp = str(self.txtBX3.text())
+            str_tmp2 = str(self.txtBX3.text())
+            str_tmp2 = str_tmp2.replace(',','.')
             if str_tmp != '':
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.BX3 = float(self.txtBX3.text())
+                        self.BX3 = float(str_tmp2)
                 else:
-                    if str_tmp != '':
-                        self.BX3 = float(self.txtBX3.text())
+                    if str_tmp2[-1] != '.':
+                        self.BX3 = float(str_tmp2)
             else:
                 self.BX3 = 1
                 
         if pa3.argm >= 4:
             str_tmp = str(self.txtAX4.text())
+            str_tmp2 = str(self.txtAX4.text())
+            str_tmp2 = str_tmp2.replace(',','.')
             if str_tmp != '':
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.AX4 = float(self.txtAX4.text())
+                        self.AX4 = float(str_tmp2)
                 else:
-                    if str_tmp != '':
-                        self.AX4 = float(self.txtAX4.text())
+                    if str_tmp2[-1] != '.':
+                        self.AX4 = float(str_tmp2)
             else:
                 self.AX4 = -1
             
             str_tmp = str(self.txtBX4.text())
+            str_tmp2 = str(self.txtBX4.text())
+            str_tmp2 = str_tmp2.replace(',','.')
             if str_tmp != '':
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.BX4 = float(self.txtBX4.text())
+                        self.BX4 = float(str_tmp2)
                 else:
-                    if str_tmp != '':
-                        self.BX4 = float(self.txtBX4.text())
+                    if str_tmp2[-1] != '.':
+                        self.BX4 = float(str_tmp2)
             else:
                 self.BX4 = 1
                 
         if pa3.argm >= 5:
             str_tmp = str(self.txtAX5.text())
+            str_tmp2 = str(self.txtAX5.text())
+            str_tmp2 = str_tmp2.replace(',','.')
             if str_tmp != '':
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.AX5 = float(self.txtAX5.text())
+                        self.AX5 = float(str_tmp2)
                 else:
-                    if str_tmp != '':
-                        self.AX5 = float(self.txtAX5.text())
+                    if str_tmp2[-1] != '.':
+                        self.AX5 = float(str_tmp2)
             else:
                 self.AX5 = -1
             
             str_tmp = str(self.txtBX5.text())
+            str_tmp2 = str(self.txtBX5.text())
+            str_tmp2 = str_tmp2.replace(',','.')
             if str_tmp != '':
                 if str_tmp[0] == '-':
                     str_tmp = str_tmp.lstrip("-")
                     if str_tmp.isnumeric() == True:
-                        self.BX5 = float(self.txtBX5.text())
+                        self.BX5 = float(str_tmp2)
                 else:
-                    if str_tmp != '':
-                        self.BX5 = float(self.txtBX5.text())
+                    if str_tmp2[-1] != '.':
+                        self.BX5 = float(str_tmp2)
             else:
                 self.BX5 = 1
 
