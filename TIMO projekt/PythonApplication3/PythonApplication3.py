@@ -14,6 +14,7 @@ centroids = []
 epsilon = 1e-3
 L = 0
 g_iters = 0
+best_point_list = []
 
 def f(x):
     x1,x2,x3,x4,x5 = sympy.symbols('x1 x2 x3 x4 x5')
@@ -51,6 +52,7 @@ def nelder_mead(f, x_start, max_iter=0,
     global L
     global centroids
     global g_iters
+    global best_point_list
     centroids.clear()
     simplexes.clear()
     best_points.clear()
@@ -62,7 +64,7 @@ def nelder_mead(f, x_start, max_iter=0,
     no_improv = 0
     res = [[x_start, prev_best]]
     bestlist = []
-
+    best_point_list.append(x_start)
     for i in range(dim):
         x = copy.copy(x_start) #tworzenie punktów początkowych 1. kopia startowego
         x[i] = x[i] + step # 2. stworzenie nowego punktu po przesunieciu kopii w jednym wymiarze o step
@@ -74,12 +76,14 @@ def nelder_mead(f, x_start, max_iter=0,
     while 1:
        # print('L iteracje: ',L)
        # print('max_iter iteracje: ',max_iter)
+       
         print(iters)
         g_iters = iters
         # order
         res.sort(key=lambda x: x[1])
         best = res[0][1]
         bestlist.append(res[0][1]) 
+        best_point_list.append([res[0][0][0],res[0][0][1]]) 
 
         simplexes.append([res[0],res[1],res[2]])
         #simplexes.append(res[1])
@@ -276,6 +280,17 @@ def give_centroid(step):
     cent.append(round(centroids[step][1],5))
     print(cent)
     return cent
+
+def give_centroid_plot_point():
+    global centroids
+    global best_point_list
+    cent_x = []
+    cent_y = []
+    print('BEST POINT LIST',*best_point_list,sep='\n')
+    for i in range(0,g_iters):
+        cent_x.append(round(best_point_list[i][0],5))
+        cent_y.append(round(best_point_list[i][1],5))
+    return [cent_x,cent_y]
 
 def give_bestpoint(step):
     return best_points[step]

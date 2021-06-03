@@ -3538,13 +3538,19 @@ class Ui_MainWindow(object):
         
     def wyrysuj_warstwice(self):
         if self.wykres_init == 0:
+            self.cent_x = []    
+            self.cent_y = []
+
             self.sc = MplWidget(self.frame_2)
             self.layout.addWidget(self.sc)
             self.frame_2.setLayout(self.layout)
+
+            
+
         else:
             self.sc.canvas.ax.cla()
         
-        
+        [self.cent_x, self.cent_y] = pa3.give_centroid_plot_point()
         
         x1 = np.linspace(self.XOd, self.XDo, 150)
         y1 = np.linspace(self.YOd, self.YDo, 150)
@@ -3552,14 +3558,15 @@ class Ui_MainWindow(object):
         X, Y = np.meshgrid(x1, y1)
         Z = f(X, Y)
         points = pa3.give_simplex_point(self.ScrollKrok.value())
+
     #[pa3.give_simplex_point(self.ScrollKrok.value(),1)[1], pa3.give_simplex_point(self.ScrollKrok.value(),1)[1],pa3.give_simplex_point(self.ScrollKrok.value(),2)[1]]
-        
+   
         x = [points[0][0], points[1][0],points[2][0],points[0][0]]
         y = [points[0][1], points[1][1],points[2][1],points[0][1]]
         print('taki jest zestaw x',x)
         print('taki jest zestaw y',y)
         
-        
+        self.sc.canvas.ax.plot(self.cent_x, self.cent_y,'r-o')
         self.sc.canvas.ax.plot(x, y)
         self.sc.canvas.ax.plot(x, y,'o')
         
