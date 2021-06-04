@@ -1,3 +1,7 @@
+'''
+Program zrobiony w ramach kursu Teoria i metody optymalizacji - projekt.
+Autorzy: Michał Birnbach, Grzegorz Cieślar
+'''
 from PyQt5 import QtCore, QtGui, QtWidgets
 import PythonApplication3 as pa3
 import numpy as np

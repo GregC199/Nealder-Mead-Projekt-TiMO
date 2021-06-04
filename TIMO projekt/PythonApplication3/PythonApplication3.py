@@ -1,3 +1,8 @@
+'''
+Program zrobiony w ramach kursu Teoria i metody optymalizacji - projekt.
+Autorzy: Micha³ Birnbach, Grzegorz Cieœlar
+'''
+
 import copy
 import math
 import random 
