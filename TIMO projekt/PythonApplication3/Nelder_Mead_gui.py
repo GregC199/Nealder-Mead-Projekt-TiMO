@@ -3540,13 +3540,9 @@ class Ui_MainWindow(object):
         if self.wykres_init == 0:
             self.cent_x = []    
             self.cent_y = []
-
             self.sc = MplWidget(self.frame_2)
             self.layout.addWidget(self.sc)
             self.frame_2.setLayout(self.layout)
-
-            
-
         else:
             self.sc.canvas.ax.cla()
         
@@ -3565,11 +3561,12 @@ class Ui_MainWindow(object):
         y = [points[0][1], points[1][1],points[2][1],points[0][1]]
         print('taki jest zestaw x',x)
         print('taki jest zestaw y',y)
-        
-        self.sc.canvas.ax.plot(self.cent_x, self.cent_y,'r-o')
-        self.sc.canvas.ax.plot(x, y)
-        self.sc.canvas.ax.plot(x, y,'o')
-        
+
+        self.sc.canvas.ax.plot(self.cent_x, self.cent_y, '-o',color = '#706E6D',linewidth=1, markersize=4)
+        #self.sc.canvas.ax.plot(x, y,'g')
+        self.sc.canvas.ax.plot(x, y,'r',linewidth=1.5)
+        self.sc.canvas.ax.plot(x, y,'o',color = '#EC9B34', markersize=5)
+
         
         #self.sc.canvas.ax.contourf(X, Y, Z, 150, cmap='jet')
         #self.sc.canvas.ax.contour(X, Y, Z, 150, color='black')
@@ -3577,6 +3574,9 @@ class Ui_MainWindow(object):
         self.sc.canvas.ax.contour(CS, levels=CS.levels[::1], colors='black',linewidths=(0.2,))
         self.sc.canvas.ax.xaxis.grid(True, linewidth=0.3, linestyle='--', color='black')
         self.sc.canvas.ax.yaxis.grid(True, linewidth=0.3, linestyle='--', color='black')
+        self.sc.canvas.ax.xaxis.set_label_text('$x_{1}$')
+        self.sc.canvas.ax.yaxis.set_label_text('$x_{2}$')
+        
         #sc.canvas.fig.colorbar()
 
         #cmap = matplotlib.cm.cool

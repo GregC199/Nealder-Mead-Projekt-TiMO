@@ -57,6 +57,7 @@ def nelder_mead(f, x_start, max_iter=0,
     simplexes.clear()
     best_points.clear()
     best_points.clear()
+    best_point_list.clear()
 
     max_iter = L
     dim = len(x_start)
