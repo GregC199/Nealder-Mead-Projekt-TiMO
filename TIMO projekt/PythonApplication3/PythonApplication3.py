@@ -37,7 +37,7 @@ def f(x):
         x3 = x[2]
         x4 = x[3]
         x5 = x[4]
-    print(f_str)
+    #print(f_str)
     return eval(f_str)
 
 
@@ -75,10 +75,10 @@ def nelder_mead(f, x_start, max_iter=0,
     # simplex iter
     iters = 0
     while 1:
-       # print('L iteracje: ',L)
-       # print('max_iter iteracje: ',max_iter)
+       # #print('L iteracje: ',L)
+       # #print('max_iter iteracje: ',max_iter)
        
-        print(iters)
+        #print(iters)
         g_iters = iters
         # order
         res.sort(key=lambda x: x[1])
@@ -90,19 +90,19 @@ def nelder_mead(f, x_start, max_iter=0,
         #simplexes.append(res[1])
         #simplexes.append(res[2])
 
-        #print('test')
-        #print(res[0][0][0],res[0][0][1],res[0][1])
-        #print(*simplexes,sep='\n')
+        ##print('test')
+        ##print(res[0][0][0],res[0][0][1],res[0][1])
+        ##print(*simplexes,sep='\n')
         # break after max_iter
 
         
 
         if max_iter and iters >= max_iter:
-            print('best val',res[0])
+            #print('best val',res[0])
             best_points = bestlist
             return bestlist
         if max_iter and iters >= max_iter:
-            print('Wszedlem do brejka')
+            #print('Wszedlem do brejka')
             break
             #return res[0]
 
@@ -124,7 +124,7 @@ def nelder_mead(f, x_start, max_iter=0,
             no_improv += 1
 
         if no_improv >= no_improv_break:
-            print('best val',res[0])
+            #print('best val',res[0])
             best_points = bestlist
             return bestlist
 
@@ -177,21 +177,21 @@ def nelder_mead(f, x_start, max_iter=0,
 
 def algorytm(start,iter):
     global L
-    print('Odebralem iteracje: ',iter)
+    #print('Odebralem iteracje: ',iter)
     L = iter
-    print('L iteracje: ',L)
+    #print('L iteracje: ',L)
     result = nelder_mead(f, start)
-    #print(result)
-    #print(*result, sep='\n')
-    #print('Simplexes:')
-    #print(*simplexes,sep='\n')
+    ##print(result)
+    ##print(*result, sep='\n')
+    ##print('Simplexes:')
+    ##print(*simplexes,sep='\n')
 
 def start_rand(arguments): #przyjmuje ilosc argumentów i tworzy wektor startowy
     while itr < arguments:
-        print('x',itr+1)
-        print('a')
+        #print('x',itr+1)
+        #print('a')
         rnd_a = int(input()) #zakresy do random.uniform musi zassysać skądś po wciśnięciu przycisku na GUI
-        print('b')
+        #print('b')
         rnd_b = int(input())
         start[itr] = random.uniform(-rnd_a, rnd_b) #nie wiem co z tym whilem calym
         itr = itr +1
@@ -199,7 +199,7 @@ def start_rand(arguments): #przyjmuje ilosc argumentów i tworzy wektor startowy
 
 def start_eval(temp_str):
 
-    #print('Input your expression:')
+    ##print('Input your expression:')
     #f_str = input()
     str_arg = 'x0'
     itr = 0
@@ -213,18 +213,18 @@ def start_eval(temp_str):
         old_str = str(itr)
         new_str = str(itr+1)
         str_arg = str_arg.replace(old_str,new_str)
-        print('argument to check',str_arg)
+        #print('argument to check',str_arg)
         if str_arg in f_str:
             arguments = arguments + 1
-            print('exists')
+            #print('exists')
         else:
-            print("doesn't exists")
+            #print("doesn't exists")
             break
         itr = itr + 1
 
     #start = np.empty(arguments)
     #itr = 0
-    print('Function has',arguments,'arguments')
+    #print('Function has',arguments,'arguments')
     return arguments
     
     #start = start_rand(arguments)
@@ -243,12 +243,12 @@ def give_simplex(step):
         point.append(simplexes[step][itr][0][0])
         point.append(simplexes[step][itr][0][1])
         point.append(simplexes[step][itr][1])
-        print('point is:','x',point[0],'y',point[1])
+        #print('point is:','x',point[0],'y',point[1])
 
         #point.append(simplexes[step][2][1])
         #point.append(simplexes[step+itr][1])
         points.append(point.copy())
-        print('POINTS ARE:',points)
+        #print('POINTS ARE:',points)
         itr = itr + 1
     return points
 
@@ -264,12 +264,12 @@ def give_simplex_point(step):
 
         point.append(simplexes[step][itr][0][0])
         point.append(simplexes[step][itr][0][1])
-        print('point is:','x',point[0],'y',point[1])
+        #print('point is:','x',point[0],'y',point[1])
 
         #point.append(simplexes[step][2][1])
         #point.append(simplexes[step+itr][1])
         points.append(point.copy())
-        print('POINTS ARE:',points)
+        #print('POINTS ARE:',points)
         itr = itr + 1
     return points
 
@@ -279,7 +279,7 @@ def give_centroid(step):
     cent.append(round(centroids[step][0][0],5))
     cent.append(round(centroids[step][0][1],5))
     cent.append(round(centroids[step][1],5))
-    print(cent)
+    #print(cent)
     return cent
 
 def give_centroid_plot_point():
@@ -287,7 +287,7 @@ def give_centroid_plot_point():
     global best_point_list
     cent_x = []
     cent_y = []
-    print('BEST POINT LIST',*best_point_list,sep='\n')
+    #print('BEST POINT LIST',*best_point_list,sep='\n')
     for i in range(0,g_iters):
         cent_x.append(round(best_point_list[i][0],5))
         cent_y.append(round(best_point_list[i][1],5))
@@ -304,7 +304,7 @@ def max_vert_dist_n2(vertices):
     dist.append(math.sqrt((vertices[1][0][0]-vertices[2][0][0])**2+(vertices[1][0][1]-vertices[2][0][1])**2))#+(vertices[1][1]-vertices[2][1])**2))
                         #             (x3-x1)^2                                  (y3-y1)^2               +              (z3-z1)^2
     dist.append(math.sqrt((vertices[2][0][0]-vertices[0][0][0])**2+(vertices[2][0][1]-vertices[0][0][1])**2))#+(vertices[2][1]-vertices[0][1])**2))
-    print('Policzone odleglosci','\n',dist,'\n')
+    #print('Policzone odleglosci','\n',dist,'\n')
     dist.sort()
     return dist[-1]
 
@@ -318,7 +318,7 @@ def max_vert_dist_n3(vertices):
     dist.append(math.sqrt((vertices[2][0][0]-vertices[3][0][0])**2+(vertices[2][0][1]-vertices[3][0][1])**2+(vertices[2][0][2]-vertices[3][0][2])**2))#+(vertices[2][1]-vertices[0][1])**2))
 
     dist.append(math.sqrt((vertices[3][0][0]-vertices[0][0][0])**2+(vertices[3][0][1]-vertices[0][0][1])**2+(vertices[3][0][2]-vertices[0][0][2])**2))
-    print('Policzone odleglosci','\n',dist,'\n')
+    #print('Policzone odleglosci','\n',dist,'\n')
     dist.sort()
     return dist[-1]
     
@@ -336,7 +336,7 @@ def max_vert_dist_n4(vertices):
 
     dist.append(math.sqrt((vertices[4][0][0]-vertices[0][0][0])**2+(vertices[4][0][1]-vertices[0][0][1])**2+(vertices[4][0][2]-vertices[0][0][2])**2+ (vertices[4][0][3]-vertices[0][0][3])**2))
 
-    print('Policzone odleglosci','\n',dist,'\n')
+    #print('Policzone odleglosci','\n',dist,'\n')
     dist.sort()
     return dist[-1]
 
@@ -354,7 +354,7 @@ def max_vert_dist_n5(vertices):
     dist.append(math.sqrt((vertices[4][0][0]-vertices[5][0][0])**2+(vertices[4][0][1]-vertices[5][0][1])**2+(vertices[4][0][2]-vertices[5][0][2])**2 + (vertices[4][0][3]-vertices[5][0][3])**2 + (vertices[4][0][4]-vertices[5][0][4])**2))
 
     dist.append(math.sqrt((vertices[5][0][0]-vertices[0][0][0])**2+(vertices[5][0][1]-vertices[0][0][1])**2+(vertices[5][0][2]-vertices[0][0][2])**2 + (vertices[5][0][3]-vertices[0][0][3])**2 + (vertices[5][0][4]-vertices[0][0][4])**2))
-    print('Policzone odleglosci','\n',dist,'\n')
+    #print('Policzone odleglosci','\n',dist,'\n')
     dist.sort()
     return dist[-1]
     
@@ -375,7 +375,7 @@ def max_vert_dist_n6(vertices):
 
     dist.append(math.sqrt((vertices[6][0][0]-vertices[0][0][0])**2+(vertices[6][0][1]-vertices[0][0][1])**2+(vertices[6][0][2]-vertices[0][0][2])**2 + (vertices[6][0][3]-vertices[0][0][3])**2 + (vertices[6][0][4]-vertices[0][0][4])**2+ (vertices[6][0][5]-vertices[0][0][5])**2))
 
-    print('Policzone odleglosci','\n',dist,'\n')
+    #print('Policzone odleglosci','\n',dist,'\n')
     dist.sort()
     return dist[-1]
 
